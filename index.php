@@ -7,8 +7,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </head>
 <body>
-  <table class="table table-dark">
-  <thead>
+  <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Ativo</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Desativado</a>
+  </li>
+</ul>
+  <table class="table table-striped table-bordered">
+  <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Primeiro</th>
@@ -16,8 +30,8 @@
       <th scope="col">Nickname</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
+  <tbody class="">
+    <tr class="table-primary">
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
