@@ -465,7 +465,21 @@ mark,
 
 .blockquote {
   margin-bottom: 1rem;
+  font-size: 20px;
+  text-align: justify;
+
+}
+.blockquote.esquerda {
+  margin-bottom: 1rem;
   font-size: 1.25rem;
+  text-align: justify;
+  float: left;
+}
+.blockquote.direita {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  text-align: justify;
+  float: right;
 }
 
 .blockquote-footer {
@@ -481,6 +495,13 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+
+.img-fluid.direita {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  float: right;
 }
 
 .img-thumbnail {
