@@ -5,13 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
   <title>Olá, mundo!</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6959CD">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">
       <img src="img/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <i>VetMaps</i>
@@ -27,7 +28,7 @@
           <a class="nav-link" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  data-toggle="modal" data-target="#cadClinica" href="#">Login Clínica</a>
+          <a class="nav-link" href="#">Login Clínica</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -115,62 +116,37 @@
 
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src="img/img2.png" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-            <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior, para demonstração.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Atualizados 3 minutos atrás</small>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="img/img1.png" alt="Imagem de capa do card">
-          <div class="card-body">
+          <img class="card-img-top" src="img/img3.png" alt="Imagem de capa do card">
+          <!-- <div class="card-body">
             <h5 class="card-title">Título do card</h5>
             <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-          </div>
+          </div> -->
           <div class="card-footer">
-            <small class="text-muted">Atualizados 3 minutos atrás</small>
+            <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaM">Adquirir Serviço</a></small>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="img/img3.png" alt="Imagem de capa do card">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title">Título do card</h5>
             <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p>
-          </div>
+          </div> -->
           <div class="card-footer">
-            <small class="text-muted">Atualizados 3 minutos atrás</small>
+            <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaA">Adquirir Serviço</a></small>
           </div>
         </div>
       </div>
       <hr>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">
-              Contato
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-          </div>
-        </div>
-        <div class="col-sm-6">
+      <div class="col-12 text-center">
+         <div class="text-center">
           <div class="btn-group" role="group">
-            <a href="#" class="list-group-item list-group-item-action active">
-              Social
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            <a class="btn btn-primary" href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a class="btn btn-warning" href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a class="btn btn-info" href="#"><i class="fab fa-twitter"></i> Twitter</a>
           </div>
         </div>
+        <p class="text-primary">VETMAPS - Rede de Clínicas Veterinárias</p>
       </div>
-
-
-
     </div>
 
 
@@ -194,14 +170,36 @@
 
 
 
-
-
-
-
-
-
-
-    <div class="modal fade" id="cadClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cadClinicaM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nova mensagem</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img src="img/img2.png" class="img-fluid">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Destinatário:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Mensagem:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <div class="modal fade" id="cadClinicaA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
