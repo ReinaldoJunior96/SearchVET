@@ -28,7 +28,7 @@
           <a class="nav-link" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login Clínica</a>
+          <a class="nav-link" href="#" href="#" data-toggle="modal" data-target="#LoginClinica">Login Clínica</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -46,7 +46,7 @@
             <a class="nav-link" href="#">Buscar Serviços</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalContato">Contato</a>
           </li>
         </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -55,6 +55,12 @@
       </form> -->
     </div>
   </nav>
+
+
+
+
+
+
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -66,21 +72,21 @@
         <img class="img-fluid d-block" src="img/img1.png" alt="Primeiro Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
-          <p></p>
+          <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>
       </div>
       <div class="carousel-item">
         <img class="img-fluid d-block" src="img/img2.png" alt="Segundo Slide">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Bem- Vindo a palfaomraa</h5>
-          <p>Melhor rede e clinicaaa</p>
+          <h5></h5>
+          <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>
       </div>
       <div class="carousel-item">
         <img class="img-fluid d-block" src="img/img3.png" alt="Terceiro Slide">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Bem- Vindo a palfaomraa</h5>
-          <p>Melhor rede e clinicaaa</p>
+          <h5></h5>
+          <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>    </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -93,17 +99,22 @@
       </a>
     </div>
 
+
+
+
+
+
     <div class="container">
       <div class="row">
-        <div class="col-24 text-center my-3">
-          <h2 class="display-4">Bem vaaindo</h2>
-          <p>Rede de Clínica veterinarias</p>
+        <div class="col-12 text-center my-5">
+          <h1 class="text-info"><i>VETMAPS</i></h1>
+          <h4>Rede de Clínica Veterinarias</h4>
         </div>
       </div>
 
       <div class="col-12">
         <h4>Quem somos?</h4>
-        <p class="text-justify">A VETMAPS é uma plataforma que trabalha com marketing e filtragem de informação, onde é realizada a integração entre proprietários de clínicas veterinárias ou pet shop's e donos de animais.<br>
+        <p class="text-justify">A <i>VETMAPS</i> é uma plataforma que trabalha com marketing e filtragem de informação, onde é realizada a integração entre proprietários de clínicas veterinárias ou pet shop's e donos de animais.<br>
           Visando o lado dos proprietários de clínicas, pode-se obter uma boa qualidade de marketing digital para sua instituição, através de informações cadastradas pela própria empresa, que serão mostradas para as pessoas que estão à procura desses serviços oferecidos por elas. <br>
         Em relação ao cliente, ele poderá ter maior contato com as empresas, buscando os serviços oferecidos, assim obtendo as informações necessárias de forma rápida e prática para cuidar da melhor forma possível da saúde do seu animal.</p>
       </div>
@@ -124,7 +135,7 @@
           <img class="card-img-top" src="img/detalhes.png" alt="Imagem de capa do card">
           <div class="card-body">
             <h5 class="card-title">Comece pelos detalhes</h5>
-            <p class="card-text text-justify">Quanto mais específicas forem as informações fornecidas, mais fácil será para o <i>vetmaps</i> promover sua clínica junto aos pacientes. Conteúdo de qualidade, como dados para contato, descrições interessantes e detalhes sobre as instalações e serviços que você oferece, tornam o seu perfil mais atrativo para os visitantes.</p>
+            <p class="card-text text-justify">Quanto mais específicas forem as informações fornecidas, mais fácil será para o <i>VETMAPS</i> promover sua clínica junto aos pacientes. Conteúdo de qualidade, como dados para contato, descrições interessantes e detalhes sobre as instalações e serviços que você oferece, tornam o seu perfil mais atrativo para os visitantes.</p>
           </div>
           <div class="card-footer">
             <!-- <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaA">Adquirir Serviço</a></small> -->
@@ -158,14 +169,32 @@
 
 
 
+    <!-- Modal CONTATO -->
+    <div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Contato</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            Entre em contato através do nosso e-mail: <b>suporte@vetmaps.com.br</b>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
-
-
-    <div class="modal fade" id="cadClinicaM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Login Clinica -->
+    <div class="modal fade" id="LoginClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
