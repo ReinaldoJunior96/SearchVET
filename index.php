@@ -95,8 +95,8 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 text-center my-3">
-          <h1 class="display-4">Bem vindo</h1>
+        <div class="col-24 text-center my-3">
+          <h2 class="display-4">Bem vaaindo</h2>
           <p>Rede de Clínica veterinarias</p>
         </div>
       </div>
@@ -106,33 +106,28 @@
         <p class="text-justify">A VETMAPS é uma plataforma que trabalha com marketing e filtragem de informação, onde é realizada a integração entre proprietários de clínicas veterinárias ou pet shop's e donos de animais.<br>
           Visando o lado dos proprietários de clínicas, pode-se obter uma boa qualidade de marketing digital para sua instituição, através de informações cadastradas pela própria empresa, que serão mostradas para as pessoas que estão à procura desses serviços oferecidos por elas. <br>
         Em relação ao cliente, ele poderá ter maior contato com as empresas, buscando os serviços oferecidos, assim obtendo as informações necessárias de forma rápida e prática para cuidar da melhor forma possível da saúde do seu animal.</p>
-
-        <h4>Comece pelos detalhes</h4>
-        <p class="text-justify">Quanto mais específicas forem as informações fornecidas, mais fácil será para o searchvet promover sua clínica junto aos pacientes. Conteúdo de qualidade, como dados para contato, descrições interessantes e detalhes sobre as instalações e serviços que você oferece, tornam o seu perfil mais atrativo para os visitantes.</p>
-
-        <h4>Monitore a sua reputação</h4>
-        <p class="text-justify">É importante saber a opinião dos seus pacientes sobre o seu estabelecimento. A página comentários oferece uma visão clara sobre a sua reputação online com uma análise específica dos aspectos avaliados da sua clínica.</p>
       </div>
 
       <div class="card-deck">
+
         <div class="card">
-          <img class="card-img-top" src="img/img3.png" alt="Imagem de capa do card">
-          <!-- <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-            <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-          </div> -->
+          <img class="card-img-top" src="img/reputacao.png" alt="Imagem de capa do card">
+          <div class="card-body">
+            <h5 class="card-title">Monitore a sua reputação</h5>
+            <p class="card-text text-justify">É importante saber a opinião dos seus pacientes sobre o seu estabelecimento. A página comentários oferece uma visão clara sobre a sua reputação online com uma análise específica dos aspectos avaliados da sua clínica.</p>
+          </div>
           <div class="card-footer">
-            <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaM">Adquirir Serviço</a></small>
+            <!-- <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaM">Adquirir Serviço</a></small> -->
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="img/img3.png" alt="Imagem de capa do card">
-          <!-- <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-            <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p>
-          </div> -->
+          <img class="card-img-top" src="img/detalhes.png" alt="Imagem de capa do card">
+          <div class="card-body">
+            <h5 class="card-title">Comece pelos detalhes</h5>
+            <p class="card-text text-justify">Quanto mais específicas forem as informações fornecidas, mais fácil será para o <i>vetmaps</i> promover sua clínica junto aos pacientes. Conteúdo de qualidade, como dados para contato, descrições interessantes e detalhes sobre as instalações e serviços que você oferece, tornam o seu perfil mais atrativo para os visitantes.</p>
+          </div>
           <div class="card-footer">
-            <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaA">Adquirir Serviço</a></small>
+            <!-- <small class="text-muted"><a href="" data-toggle="modal" data-target="#cadClinicaA">Adquirir Serviço</a></small> -->
           </div>
         </div>
       </div>
@@ -145,7 +140,7 @@
             <a class="btn btn-info" href="#"><i class="fab fa-twitter"></i> Twitter</a>
           </div>
         </div>
-        <p class="text-primary">VETMAPS - Rede de Clínicas Veterinárias</p>
+        <p class="text-primary"><i>VETMAPS</i> - Rede de Clínicas Veterinárias</p>
       </div>
     </div>
 
