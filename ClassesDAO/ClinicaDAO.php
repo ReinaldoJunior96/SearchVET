@@ -88,7 +88,6 @@ class ClinicaDAO extends PDOconectar
             $linhas = $Verifica_Status->fetchAll(PDO::FETCH_OBJ);
             foreach ($linhas as $listar) {$status = $listar->Status;}
                 if ($Validar->rowCount() == 1) {
-                    session_start();
                     if($status == 'teste') {    
                         session_start();
                         $_SESSION['login'] = $id;
@@ -96,17 +95,17 @@ class ClinicaDAO extends PDOconectar
                         $_SESSION['status'] = "teste";
                         header("Location: Perfil.php");
                     }elseif ($status == 'pago') {
-                        session_start();
+                        //session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "pago";
-                        header("Location: Perfil.php");
+                        //header("Location: Perfil.php");
                     }elseif ($status == 'naopago') {
-                        session_start();
+                        //session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "naopago";
-                        header("Location: Perfil.php");                    
+                        //header("Location: Perfil.php");                    
                     }
                 }elseif ($Validar->rowCount() == 0) {
                     echo "<h3>Usuário ou senha Inválido</a></h3>";

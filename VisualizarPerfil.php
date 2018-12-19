@@ -57,42 +57,34 @@
   </nav>
 
   <div class="container">
-    <!-- <div class="row">
-      <div class="col-12 text-center my-5">
-        <h1 class="text-info"><i>VETMAPS</i></h1>
-        <h4>Rede de Clínica Veterinarias</h4>
-      </div>
-    </div> -->
-    <h4 class="text-secondary my-3">Olá, o que você gostaria de buscar? <i class="fas fa-search"></i></h4>
-    <form>
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label"><i>Qual bairro deseja buscar o serviço?</i></label>
-        <div class="col-sm-10">
-          <input type="text" name="filtro" class="form-control" id="inputEmail3" placeholder="Bairro...">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label"><i>Selecione o serviço</i></label>
-        <div class="col-sm-10">
-          <select class="custom-select" name="filtro2">
-            <option selected>Serviços Diversos</option>
-            <option value="24h">&emsp;Clínicas 24h</option>
-            <option value="ServicoM">&emsp;Serviço Móvel</option>
-            <option value="AttGA">&emsp;Atendimento P/Grandes Animais</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-info btn-lg">Buscar Serviços</button>
-        </div>
-      </div>
-    </form>
+<div class="estrelas">
+  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>  
+  <label for="cm_star-1"><i class="far fa-star"></i></label>
+
+  <input type="radio" id="cm_star-1" name="fb" value="1"/>
+  <label for="cm_star-2"><i class="far fa-star"></i></label>
+  
+  <input type="radio" id="cm_star-2" name="fb" value="2"/>
+  <label for="cm_star-3"><i class="far fa-star"></i></label>
+  <input type="radio" id="cm_star-3" name="fb" value="3"/>
+  <label for="cm_star-4"><i class="far fa-star"></i></label>
+  <input type="radio" id="cm_star-4" name="fb" value="4"/>
+  <label for="cm_star-5"><i class="far fa-star"></i></label>
+  <input type="radio" id="cm_star-5" name="fb" value="5"/>
+</div>
     <?php
-    require_once('ClassesDAO/UsuarioDAO.php');      
-    $verRank = new UsuarioDAO();
-    $verRank->filtro(@$_GET['filtro'],@$_GET['filtro2'],@$_GET['logado']);
-    ?>
+                    require_once ('ClassesDAO/UsuarioDAO.php');
+                    $Visualizar = new UsuarioDAO();
+                    $Visualizar->VisualizarPerfil($_GET['id'],$_GET['logado']);
+                    ?>
+
+
+
+
+
+
+
+
     <hr>
     <hr>
     <div class="col-24 text-center">
@@ -138,7 +130,7 @@
 
 <!-- Modal Login Clinica -->
 <div class="modal fade" id="LoginClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog " role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Acesse seu pefil</h5>

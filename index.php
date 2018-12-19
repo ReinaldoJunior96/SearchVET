@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">
-      <img src="img/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="imagens/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <i>VetMaps</i>
     </a>
 
@@ -69,21 +69,21 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="img-fluid d-block" src="img/img1.png" alt="Primeiro Slide">
+        <img class="img-fluid d-block" src="images/img1.png" alt="Primeiro Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
           <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-fluid d-block" src="img/img2.png" alt="Segundo Slide">
+        <img class="img-fluid d-block" src="images/img2.png" alt="Segundo Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
           <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-fluid d-block" src="img/img3.png" alt="Terceiro Slide">
+        <img class="img-fluid d-block" src="images/img3.png" alt="Terceiro Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
           <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
@@ -122,7 +122,7 @@
       <div class="card-deck">
 
         <div class="card">
-          <img class="card-img-top" src="img/reputacao.png" alt="Imagem de capa do card">
+          <img class="card-img-top" src="images/reputacao.png" alt="Imagem de capa do card">
           <div class="card-body">
             <h5 class="card-title">Monitore a sua reputação</h5>
             <p class="card-text text-justify">É importante saber a opinião dos seus pacientes sobre o seu estabelecimento. A página comentários oferece uma visão clara sobre a sua reputação online com uma análise específica dos aspectos avaliados da sua clínica.</p>
@@ -132,7 +132,7 @@
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="img/detalhes.png" alt="Imagem de capa do card">
+          <img class="card-img-top" src="images/detalhes.png" alt="Imagem de capa do card">
           <div class="card-body">
             <h5 class="card-title">Comece pelos detalhes</h5>
             <p class="card-text text-justify">Quanto mais específicas forem as informações fornecidas, mais fácil será para o <i>VETMAPS</i> promover sua clínica junto aos pacientes. Conteúdo de qualidade, como dados para contato, descrições interessantes e detalhes sobre as instalações e serviços que você oferece, tornam o seu perfil mais atrativo para os visitantes.</p>
@@ -195,7 +195,7 @@
 
   <!-- Modal Login Clinica -->
   <div class="modal fade" id="LoginClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Acesse saeu pefil</h5>
@@ -204,21 +204,21 @@
           </button>
         </div>
         <div class="modal-body">
-          <img src="img/user.png" class="img-fluid rounded mx-auto d-block">
-          <form>
+          <img src="images/user.png" class="img-fluid rounded mx-auto d-block">
+          <form method="POST" action="Back/validarLogin.php">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Usuário</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <input type="text" name="iden" class="form-control" id="recipient-name">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Senha</label>
-              <input type="password" class="form-control" id="recipient-name">
-            </div>
-            <h6>Não possui cadastro? <a href="#" class="badge badge-info">Faça Login</a></h6>
+              <input type="password" name="senha" class="form-control" id="recipient-name"><br>
+              <h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
+              <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </div> 
+            </div>     
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Entrar</button>
         </div>
       </div>
     </div>      

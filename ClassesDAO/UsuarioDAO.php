@@ -35,53 +35,36 @@ class UsuarioDAO extends PDOconectar
                 $Att = $listar->Atendimento_A;
                 //tbl logos
                 $foto = $listar->Foto;
+                //<img class='logoc' src='images/".$foto."'><br><br>
             }
             if ($movelE == null) {
                 $pega= "No momento não estamos trabalho com este serviço.";
                 $movelE = utf8_decode($pega);
             }
                 echo "
-                <div>
-                <section>
-                <button style='background-color:#CC6F83;' class='button small' onClick='window.history.back()'>Voltar</button>  
-                <hr>                                     
-                <img class='logoc' src='images/".$foto."'><br><br>
+                <div class='col-24 my-5'>
+                    <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
+                </div>                
+                <img src='images/terrazoo.png' class='img-thumbnail float-sm-right rounded mx-auto d-block' alt='Imagem responsiva'>
+                <div class='jumbotron jumbotron-fluid'>
+                    <div class='container'>
+                        <h1 class='text-info '>".utf8_encode($nome)."</h1>
+                        <p class='lead'><b>Rua/Avenida:</b> ".utf8_encode($rua)."</p>
+                        <p class='lead'><b>Bairro:</b> ".utf8_encode($bairro)."</p>
+                        <p class='lead'><b>Cidade:</b> ".utf8_encode($cidade).".</p>
+                        <p class='lead'><b>Complemento:</b> ".utf8_encode($complemento)."
+                        <p class='lead'><b>Localização:</b> <a href=".$mapa." target='_blank'> Ver no mapa <i class='fas fa-map-marker-alt'></i></a>.
 
-                   <br><h2 class='titulo' style='font-size:35px;'>".utf8_encode($nome)."</h2>
+                        <h4 class='d-block p-0 bg-secondary text-white'>Contato</h4>
+                        <p class='lead'><b>Contato:</b> ".$contato."
+                        <p class='lead'><b>E-mail:</b> ".$email."
 
-                   
-                   <hr>
-                    <p class='texto' style='font-size: 20px; text-align: justify; position: relative;'>        
-                     <b>Rua/Avenida:</b> ".utf8_encode($rua)." <br>
-                     <b>Bairro:</b> ".utf8_encode($bairro)."<br>
-                     <b>Cidade:</b> ".utf8_encode($cidade)." <br>
-                     <b>CEP:</b> ".$cep.".<br>
-                     <b>Complemento:</b> ".utf8_encode($complemento)." <br>  <a style='color:red;' href=".$mapa." target='_blank'> Ver endereço no mapa</a>
-                    </p>
-                 </section>
-                </div>    
-                <hr>            
-                <section>
-                                    
-                    <p class='texto' style='font-size: 20px; text-align: justify;''>        
-                    <b>Contato:</b> ".$contato."<br>
-                    <b>E-mail:</b> ".$email."
-                    </p>
-                </section>
-                <hr>
-                <section>
-                    <h2 class='' style='font-size:28px;'><b>Disponibilidade</b></h2>                        
-                    <p class='texto' class='end' style='font-size: 20px; text-align: justify;''>        
-                    <b>Horário de Funcionamento:</b> ".$func."
-                    </p>
-                </section>  
-                <hr>            
-                <section>
-                    <h2 style='font-size:28px;'><b>Serviço Móvel?</b></h2>                        
-                    <p class='texto' style='font-size: 20px; text-align: justify;''>        
-                    ".utf8_encode($servicoM).", ".utf8_encode($movelE)."
-                    </p>
-                    </section>
+                        <h4 class='d-block p-0 bg-secondary text-white'>Disponibilidade</h4>
+                        <p class='lead'><b>Horário de Funcionamento:</b> ".$func."
+
+                        <h4 class='d-block p-0 bg-secondary text-white'>Serviços Adiconais</h4>
+                        <p class='lead'><b>Serviço Móvel: </b>".utf8_encode($servicoM).", ".utf8_encode($movelE)."
+                    </div>
                 </div>
                 ";
 
@@ -218,9 +201,7 @@ class UsuarioDAO extends PDOconectar
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
                 if ($contar>=1) {
                 echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
+                       <div class='card'>        
                 ";
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
@@ -229,10 +210,14 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b>Ponto de Referência: ".utf8_encode($complemento).". </b></p>                  
-                        </li>
+                        
+                          
+                          <div class='card-body'>
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
                     ";
                 }
                 echo "
