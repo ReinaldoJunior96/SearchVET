@@ -93,7 +93,7 @@ class ClinicaDAO extends PDOconectar
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "teste";
-                        header("Location: Perfil.php");
+                        header("Location: ../Perfil.php");
                     }elseif ($status == 'pago') {
                         //session_start();
                         $_SESSION['login'] = $id;
@@ -137,33 +137,34 @@ class ClinicaDAO extends PDOconectar
             $contato = $listar->Contato;           
         }
         echo "
-        <div id='main' class='container'>
-             <h3>Bem Vindo(a), ".$nome."</h3>
+        
             <form method='post' action='./Back/EditarRecebe.php'>
-                <input type='hidden' name='iden' value=".$email.">
-                    <div class='row uniform'>
+            <input type='hidden' name='iden' value=".$email.">
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Instituição</span>
+                </div>
+                    <textarea row='1' name='nome' class='form-control' aria-label='Com textarea'>".utf8_encode($nome)."</textarea>
+            </div>
 
-                        <div class='6u 12u(xsmall)'>
-                            Nome Instituição
-                            <textarea name='nome' rows='1'>".utf8_encode($nome)."</textarea>
-                        </div>
-                        <div class='6u 12u$(xsmall)'>
-                            E-mail          
-                            <textarea name='email' rows='1'>".utf8_encode($email)."</textarea>
-                        </div>                        
-                        <div class='6u 12u$(xsmall)'>
-                            Contato
-                            <textarea name='contato' rows='1'>".utf8_decode($contato)."</textarea>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='12u'>
-                            <ul class='actions'>
-                                <br><li><input type='submit' class='style1' value='Enviar' style='background-color:#CC6F83' /></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>E-mail</span>
+                </div>
+                    <textarea row='1' name='email' class='form-control' aria-label='Com textarea'>".utf8_encode($email)."</textarea>
+            </div>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Contato</span>
+                </div>
+                    <textarea row='1' name='contato' class='form-control' aria-label='Com textarea'>".utf8_decode($contato)."</textarea>
+            </div>
+            <div class='form-group row'>
+            <div class='col-sm-10'>
+              <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+            </div>
+            </form>
+          </div>
         </div>
         ";
     }

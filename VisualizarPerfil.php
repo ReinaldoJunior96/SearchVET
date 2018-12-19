@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">
-      <img src="img/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="images/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <i>VetMaps</i>
     </a>
 
@@ -139,7 +139,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <img src="img/user.png" class="img-fluid rounded mx-auto d-block">
+        <img src="images/user.png" class="img-fluid rounded mx-auto d-block">
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Usuário</label>

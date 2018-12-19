@@ -75,8 +75,8 @@ $status = $_SESSION['status'];
 			Menu
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item active" href="Perfil.php">Contato</a>
-			<a class="dropdown-item" href="EditarEndereco.php">Endereço</a>
+			<a class="dropdown-item" href="Perfil.php">Contato</a>
+			<a class="dropdown-item active" href="#">Endereço</a>
 			<a class="dropdown-item" href="#">Informações</a>
 			<a class="dropdown-item" href="#">Logomarca</a>
 			<div class="dropdown-divider"></div>
@@ -85,14 +85,14 @@ $status = $_SESSION['status'];
 	</div>
 	<?php		
 	require_once ('ClassesDAO/ClinicaDAO.php');
-	$PerfilC = new ClinicaDAO();	
+	$Endereco = new ClinicaDAO();	
 	if ($status == 'teste') {
 		echo "
 		<p class='text-sm-left'>Você está em período de teste durante 7 dias, aproveite</p>
 		";
-		$PerfilC->Logado($logado);
+		$Endereco->Endereco($logado);
 	}elseif ($status == 'pago') {										
-		$PerfilC->Logado($logado);
+		$Endereco->Endereco($logado);
 	}elseif ($status == 'naopago') {										
 		echo "Período de teste finalizado, entre em contato conosco ou realiza o pagamento do seu boleto.";
 	}		
