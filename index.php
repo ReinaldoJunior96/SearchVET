@@ -69,7 +69,7 @@
     </ol> -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="img-fluid d-block" src="images/img1.png" alt="Primeiro Slide">
+        <img class="img-fluid d-block" src="images/banner.png" alt="Primeiro Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
           <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
