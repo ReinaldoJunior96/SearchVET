@@ -35,7 +35,7 @@ class UsuarioDAO extends PDOconectar
                 $Att = $listar->Atendimento_A;
                 //tbl logos
                 $foto = $listar->Foto;
-                //<img class='logoc' src='images/".$foto."'><br><br>
+                //<img src='images/terrazoo.png' class='img-thumbnail float-sm-right rounded mx-auto d-block' alt='Imagem responsiva'>
             }
             if ($movelE == null) {
                 $pega= "No momento não estamos trabalho com este serviço.";
@@ -44,8 +44,8 @@ class UsuarioDAO extends PDOconectar
                 echo "
                 <div class='col-24 my-5'>
                     <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
-                </div>                
-                <img src='images/terrazoo.png' class='img-thumbnail float-sm-right rounded mx-auto d-block' alt='Imagem responsiva'>
+                </div>    
+                <img src='images/".$foto."' class='img-thumbnail float-sm-right rounded mx-auto d-block ' alt='Logo Indisponivel'>
                 <div class='jumbotron jumbotron-fluid'>
                     <div class='container'>
                         <h1 class='text-info '>".utf8_encode($nome)."</h1>
@@ -91,11 +91,6 @@ class UsuarioDAO extends PDOconectar
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
                 if ($contar>=1) {
-                echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -103,16 +98,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                           <b><a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a></b><br>
-                            <p>Ponto de Referência: ".utf8_encode($complemento).".</p>                 
-                        </li>
-
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     echo "<h1>*Nome incorreto ou nenhuma clínica cadastrada com esse bairroaaaaaa*</h1>";
                 }
@@ -127,32 +122,23 @@ class UsuarioDAO extends PDOconectar
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
                 if ($contar>=1) {
-                echo "
-                
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
                     $email = $listar->Email;
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
-                    $foto = $listar->Foto;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p> 
-                        
-                                            
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
-                    // <img src='images/".$foto."' style='width: 100%;'>
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     echo "<h1 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h1>";
                 }
@@ -165,12 +151,7 @@ class UsuarioDAO extends PDOconectar
                 $filtro->execute();
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
-                if ($contar>=1) {
-                echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
+               if ($contar>=1) {
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -178,15 +159,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p>                
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     echo "<h3 style='text-align: center;'>CONDIÇÕES DE BUSCA NÃO ENCONTRADAS</h3>";
                 }
@@ -200,9 +182,6 @@ class UsuarioDAO extends PDOconectar
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
                 if ($contar>=1) {
-                echo "
-                       <div class='card'>        
-                ";
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -210,19 +189,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        
-                          
-                          <div class='card-body'>
+                          <div class='card'> 
+                            <div class='card-body'> 
                             <h3 class='card-title'>".utf8_encode($nome)."</h3>
                             <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
                             <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
                           </div>
                         </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
                 }
@@ -235,12 +211,7 @@ class UsuarioDAO extends PDOconectar
                 $filtro->execute();
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
-                if ($contar>=1) {
-                echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
+               if ($contar>=1) {
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -248,15 +219,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p>               
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
                 }
@@ -269,12 +241,7 @@ class UsuarioDAO extends PDOconectar
                 $filtro->execute();
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
-                if ($contar>=1) {
-                echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
+               if ($contar>=1) {
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -282,15 +249,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p>               
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
                 }
@@ -301,11 +269,6 @@ class UsuarioDAO extends PDOconectar
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
                 if ($contar>=1) {
-                echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -313,15 +276,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p>                 
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
 
                     echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
@@ -332,12 +296,7 @@ class UsuarioDAO extends PDOconectar
                 $filtro->execute();
                 $contar =  $filtro->rowCount();           
                 $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
-                    if ($contar>=1) {
-                    echo "
-                <hr>
-                <ul class='alt' style='word-wrap: break-word;'>
-                               
-                ";
+                if ($contar>=1) {
                 foreach ($linhas as $listar) {
                     $Iden = $listar->Identificacao;
                     $nome = $listar->Nome;
@@ -345,15 +304,16 @@ class UsuarioDAO extends PDOconectar
                     $contato = $listar->Contato;
                     $complemento = $listar->Complemento;
                     echo"
-                        <li>
-                            <a style='font-size:25px;' href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."'>".utf8_encode($nome)."</a><br>
-                            <p><b style='color:black;'>Ponto de Referência: ".utf8_encode($complemento).". </b></p>                 
-                        </li>
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
                     ";
                 }
-                echo "
-                </ul> 
-                "; 
                 }elseif ($contar<=0) {
                     echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
                 }

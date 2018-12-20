@@ -4,7 +4,7 @@ session_start();
 if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
 	unset($_SESSION['login']);
 	unset($_SESSION['senha']);
-//header('location:index.php');
+header('location:index.php');
 }
 $logado = $_SESSION['login'];
 $status = $_SESSION['status'];
@@ -13,13 +13,13 @@ $status = $_SESSION['status'];
 <html lang="pt-br">
 <head>
 	<!-- Meta tags Obrigatórias -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 	<!-- Bootstrap CSS -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.css">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>	
 	<title>Olá, mundo!</title>
 </head>
 <body>
@@ -69,23 +69,23 @@ $status = $_SESSION['status'];
 
 <div class='container my-5'>
 	<!-- Botão dropleft padrão -->
-	<h3>Atualize seu perfil</h3>
+	<h3>Atualize seu endereço</h3>
 	<div class="dropdown float-sm-right">
 		<button class="btn btn-info dropdown-toggle my-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Menu
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			<a class="dropdown-item" href="Perfil.php">Contato</a>
-			<a class="dropdown-item active" href="#">Endereço</a>
-			<a class="dropdown-item" href="#">Informações</a>
-			<a class="dropdown-item" href="#">Logomarca</a>
+			<a class="dropdown-item active" href="EditarEndereco.php">Endereço</a>
+			<a class="dropdown-item" href="EditarPerguntas.php">Informações</a>
+			<a class="dropdown-item" href="AddLogo.php">Logomarca</a>
 			<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Sair</a>
+				<a class="dropdown-item" href="Back/Sair.php">Sair</a>
 		</div>
 	</div>
 	<?php		
 	require_once ('ClassesDAO/ClinicaDAO.php');
-	$Endereco = new ClinicaDAO();	
+	$Endereco = new ClinicaDAO();		
 	if ($status == 'teste') {
 		echo "
 		<p class='text-sm-left'>Você está em período de teste durante 7 dias, aproveite</p>
@@ -116,13 +116,6 @@ $status = $_SESSION['status'];
 	})();
 
 </script>
-
-
-
-
-
-
-
 <hr>
 <div class="col-24 text-center">
 	<div class="text-center">
@@ -151,64 +144,61 @@ $status = $_SESSION['status'];
 
 
 <!-- Modal CONTATO -->
-<div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Contato</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-					<!-- <span aria-hidden="true">&times;</span> -->
-				</button>
-			</div>
-			<div class="modal-body">
-				Entre em contato através do nosso e-mail: <b>suporte@vetmaps.com.br</b>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-			</div>
-		</div>
-	</div>
-</div>
+  <div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contato</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <!-- <span aria-hidden="true">&times;</span> -->
+          </button>
+        </div>
+        <div class="modal-body">
+          Entre em contato através do nosso e-mail: <b>suporte@vetmaps.com.br</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
 
 
-<!-- Modal Login Clinica -->
-<div class="modal fade" id="LoginClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog " role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Acesse saeu pefil</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<img src="images/user.png" class="img-fluid rounded mx-auto d-block">
-				<form method="POST" action="Back/validarLogin.php">
-					<div class="form-group">
-						<label for="recipient-name" class="col-form-label">Usuário</label>
-						<input type="text" name="iden" class="form-control" id="recipient-name">
-					</div>
-					<div class="form-group">
-						<label for="message-text" class="col-form-label">Senha</label>
-						<input type="password" name="senha" class="form-control" id="recipient-name"><br>
-						<h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">Entrar</button>
-						</div> 
-					</div>     
-				</form>
-			</div>
-		</div>
-	</div>      
-</div>
-
-
-
-
+  <!-- Modal Login Clinica -->
+  <div class="modal fade" id="LoginClinica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Acesse saeu pefil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="images/user.png" class="img-fluid rounded mx-auto d-block">
+          <form method="POST" action="Back/validarLogin.php">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Usuário</label>
+              <input type="text" name="iden" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Senha</label>
+              <input type="password" name="senha" class="form-control" id="recipient-name"><br>
+              <h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
+              <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </div> 
+            </div>     
+          </form>
+        </div>
+      </div>
+    </div>      
+  </div>
 <!-- JavaScript (Opcional) -->
+<script src="js/Cep.js"></script>
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

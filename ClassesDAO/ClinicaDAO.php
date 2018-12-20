@@ -160,12 +160,12 @@ class ClinicaDAO extends PDOconectar
                     <textarea row='1' name='contato' class='form-control' aria-label='Com textarea'>".utf8_decode($contato)."</textarea>
             </div>
             <div class='form-group row'>
-            <div class='col-sm-10'>
-              <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+                <div class='col-sm-10'>
+                    <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+                </div>
             </div>
             </form>
-          </div>
-        </div>
+
         ";
     }
 
@@ -215,58 +215,62 @@ class ClinicaDAO extends PDOconectar
 
         }
         echo "
-        <div id='main' class='container'>
-            <section>
-                <form method='post' action='./Back/EnderecoRecebe.php'>
-                <input type='hidden' name='iden' value=".$Email." >
-                    <div class='row uniform'>
-                        <div class='6u 12u(xsmall)'>
-                        CEP
-                            <input type='text' name='cep' id='cep' value=".@$cep.">
-                        </div>       
+        <form method='post' action='./Back/EnderecoRecebe.php'>
+            <input type='hidden' name='iden' value=".$Email.">
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>CEP</span>
+                </div>
+                    <textarea row='1' name='cep' id='cep' class='form-control' aria-label='Com textarea'>".@$cep."</textarea>
+            </div>
 
-                        <div class='6u 12u(xsmall)'>
-                        Rua
-                            <textarea name='rua' rows='1' id='rua'>".utf8_encode(@$rua)."</textarea>
-                        </div>
-                       
-                        <div class='6u 12u(xsmall)'>
-                         Bairro
-                            <textarea name='bairro' rows='1' id='bairro'>".utf8_encode(@$bairro)."</textarea>
-                        </div>
-                       
-                        <div class='6u 12u(xsmall)'>
-                         Cidade
-                            <textarea name='cidade' rows='1' id='cidade'>".utf8_encode(@$cidade)."</textarea>
-                        </div>
-
-                        <div class='6u 12u(xsmall)'>
-                        Complemento (Informe pontos de referência, paradas etc...)
-                            <textarea name='complemento' rows='3' placeholder=''>".utf8_encode(@$complemento)."</textarea>
-                        </div>
-
-                        <div class='6u 12u(xsmall)'>
-                        Link para mapa <br>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Rua</span>
+                </div>
+                    <textarea name='rua' rows='1' id='rua' class='form-control' aria-label='Com textarea'>".utf8_encode(@$rua)."</textarea>
+            </div>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Bairro</span>
+                </div>
+                    <textarea name='bairro' rows='1' id='bairro' class='form-control' aria-label='Com textarea'>".utf8_encode(@$bairro)."</textarea>
+            </div>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Cidade</span>
+                </div>
+                    <textarea name='cidade' rows='1' id='cidade' class='form-control' aria-label='Com textarea'>".utf8_encode(@$cidade)."</textarea>
+            </div>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Complemento</span>
+                </div>
+                    <textarea row='1' name='complemento' class='form-control' aria-label='Com textarea'>".utf8_encode(@$complemento)."</textarea>
+            </div>
+            <div class='6u 12u(xsmall)'>
                         Para inserir o link no mapa siga as instruções abaixo:<br>
                             1) Abra o link: <a style='color:red;' href='https://www.google.com.br/maps' target='_blank' >Abrir mapa aqui</a>  <br>    
                             2) No canto superior esquerdo, insira seu endereço ou procure no mapa o endereço que você deseja inserir <br>
                             3) Feito isso confirme no mesmo lado se o endereço está correndo, se sim, selecione o botão compartilhar <br>
-                            4) Selecione copiar link e cole na caixa de texto abaixo.     
-                            <input type='text' name='mapa' value=".@$mapa." >  
-                                     
+                            4) Selecione copiar link e cole na caixa de texto abaixo.  
                         </div>
-                    </div>
-                        <div class='row'>
-                            <div class='12u'>
-                                <ul class='actions'>
-                                    <br><li><input type='submit' class='style1' value='Editar' style='background-color:#CC6F83' /></li>
-                                </ul>
-                            </div>
-                        </div>
-                </form>
-            </section>
+            <div class='input-group input-group-sm mb-3'>
+                <div class='input-group-prepend'>
+                    <span class='input-group-text'>Localização Maps</span>
+                </div>
+                    <textarea row='1' name='mapa' class='form-control' aria-label='Com textarea'>".@$mapa."</textarea>
+            </div>
+            <div class='form-group row'>
+            <div class='col-sm-10'>
+              <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+            </div>
+            </form>
+          </div>
         </div>
-        <hr>
+
+
+
         ";
     }
     public function EditarEndereco($cep,$rua,$bairro,$cidade,$complemento,$iden,$mapa)
@@ -318,56 +322,55 @@ class ClinicaDAO extends PDOconectar
            $att =  $listar->Atendimento_A;
         }
         echo "
-        <div id='main' class='container'>
-            <section>
-                <form method='post' action='./Back/InformacoesRecebe.php'>
-                <input type='hidden' name='iden' value=".$Email." >
-                    <div class='row uniform'>
-                        <div class='6u 12u(xsmall)'>
-                        Horário de Funcionamento? <b>".$funcionamento."</b>
-                            <select name='funcionamento'>
-                                <option>Selecione</option>
+        <form method='post' action='./Back/InformacoesRecebe.php'>
+        <input type='hidden' name='iden' value=".$Email." >
+
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Funcionamento:<b> ".$funcionamento."</b></label>
+          </div>
+          <select name='funcionamento' class='custom-select' id='inputGroupSelect01'>
+            <option>Selecione...</option>
                                 <option value='08:00 - 17:00 horas'>08:00 - 17:00horas</option>
                                 <option value='08:00 - 12:00 Horas'>08:00 - 12:00Horas</option>
                                 <option value='12:00 - 18:00 horas'>12:00 - 18:00horas</option>
                                 <option value='24Horas'>24Horas</option>
-                            </select>
-                        </div>       
-
-                        <div class='6u 12u(xsmall)'>
-                        Sua instituição possiu SERVIÇO MÓVEL? <b>".@$servicoM."</b>
-                            <select name='servicoM'>
-                                <option>Selecione</option>
-                                <option value='Sim'>Sim</option>
-                                <option value='Não'>Não</option>
-                            </select>
-                        </div>
-                       
-                        <div class='6u 12u(xsmall)'>
-                         Se SIM para Serviço Móvel, explique como funciona.
-                            <textarea name='infoMovel' rows='2'>".utf8_encode(@$movelE)."</textarea>
-                        </div>
-                       
-                        <div class='6u 12u(xsmall)'>
-                         Sua instituição atende animais de grande porte? <b>".utf8_encode(@$att)."</b>
-                            <select name='atendimento'>
-                                <option>Selecione</option>
-                                <option value='Sim'>Sim</option>
-                                <option value='Não'>Não</option>
-                            </select>
-                        </div>
-                    </div>
-                        <div class='row'>
-                            <div class='12u'>
-                                <ul class='actions'>
-                                    <br><li><input type='submit' class='style1' value='Editar' style='background-color:#CC6F83' /></li>
-                                </ul>
-                            </div>
-                        </div>
-                </form>
-            </section>
+          </select>
         </div>
-        <hr>
+
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Serivço Móvel: <b>".@$servicoM."</b> </label>
+          </div>
+          <select name='servicoM' class='custom-select' id='inputGroupSelect01'>
+                                <option>Selecione...</option>
+                                <option value='Sim'>Sim</option>
+                                <option value='Não'>Não</option>
+          </select>
+        </div>
+
+        <div class='input-group mb-3'>
+          <div class='input-group-prepend'>
+            <label class='input-group-text' for='inputGroupSelect01'>Att. Grandes Animais: <b>".utf8_encode(@$att)."</b></label>
+          </div>
+          <select  name='atendimento' class='custom-select' id='inputGroupSelect01'>
+            <option>Selecione</option>
+                                <option value='Sim'>Sim</option>
+                                <option value='Não'>Não</option>
+          </select>
+        </div>
+
+        <div class='input-group input-group-lg mb-3'>
+            <div class='input-group-prepend'>
+                <span class='input-group-text'>Funcionamento serviço móvel, explique</span>
+            </div>
+            <textarea name='infoMovel' name='mapa' class='form-control' aria-label='Com textarea'>".utf8_encode(@$movelE)."</textarea>
+            </div>
+            <div class='form-group row'>
+            <div class='col-sm-10'>
+              <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+            </div>
+        </form>
         ";
     }
     public function EditarInformacoes($funcionamento,$servicoM,$movelE,$att,$iden)
