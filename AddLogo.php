@@ -120,7 +120,7 @@ $status = $_SESSION['status'];
                                  move_uploaded_file($_FILES['fileUpload']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
 
                                  $img = WideImage::load('images/'.$new_name.'');
-                                 $red = $img->resize(300);
+                                 $red = $img->resize(300,300);
                                  $red->saveToFile('images/'.$new_name.'', 100);            
 
                                  $newFotoDAO->EditarInformacoes($newFoto,$new_name);

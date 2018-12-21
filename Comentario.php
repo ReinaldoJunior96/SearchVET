@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="236042560158-hrchdmsmkiphvoe5avtulgdl6iqv2sei.apps.googleusercontent.com">
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
@@ -45,7 +43,7 @@
               <a class="dropdown-item" href="#">Algo mais aqui</a> -->
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="BuscarClinicas.php"><i class="fas fa-search-location"></i> Buscar Serviços</a>
           </li>
           <li class="nav-item">
@@ -59,62 +57,24 @@
     </div>
   </nav>
 
-  <div class="container">
-    <!-- <div class="row">
-      <div class="col-12 text-center my-5">
-        <h1 class="text-info"><i>VETMAPS</i></h1>
-        <h4>Rede de Clínica Veterinarias</h4>
-      </div>
-    </div> -->
-    <h3 class="text-info my-3">Login <i class="fas fa-id-card-alt"></i></h3>
-    <form method="POST">
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">E-mail</label>
-        <div class="col-sm-10">
-          <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="" required="">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Senha</label>
-        <div class="col-sm-10">
-          <input type="password" name="senha" class="form-control" id="inputPassword3" placeholder="" required="">
-        </div>
-      </div>
+  <div class="container my-5">
+    <p class="text-left">Olá <?php echo $_GET['logado'] ?> deixe sua opinião... </p>
+  <form>
+    <?php
+                      echo "<input type='hidden' name='id' value=".$_GET['id'].">";
+                      echo "<input type='hidden' name='usuario' value=".$_GET['logado'].">";
+                      ?>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Exemplo de textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
 
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-info btn-lg">Login</button>        
-          <p class="text-left">Não possui conta? <a href="CadUsu.php" class="badge badge-warning">Cadastre-se</a></p>  
-        </div>
-        
-      </div>
-    </form>
+
+
+
     <hr>
-    <p class="text-left">Se preferir, utilize sua conta GOOGLE</p>
-    <div class="g-signin2 float-center" data-onsuccess="onSignIn"></div>
-    <?php 
-                    require_once ('ClassesDAO/UsuarioDAO.php');
-                    $novoUSU = new UsuarioDAO();
-                    if (!empty(@$_POST['email'])) {
-                      $novoUSU->validarLogin(@$_POST['email'],@$_POST['senha']);
-                    
-                    }
-                    
-                    ?>
-                    <script type="text/javascript">
-                      function onSignIn(googleUser) {
-                        var profile = googleUser.getBasicProfile();
-                        var userID = profile.getId();
-                        var userName = profile.getName();
-                        var userImg = profile.getImageUrl();
-                        var userEmail = profile.getEmail();
-                        if (userName !== '') {
-                          window.location="BuscarClinicas.php?logado="+userEmail+"";
-                          //window.location="http://www.vetmaps.com.br/BuscarClinicas.php?logado="+userEmail+"";
-                        }                     
-                      }                     
-                    </script>
-                    <hr>
+    <hr>
     <div class="col-24 text-center">
      <div class="text-center">
       <div class="btn-group" role="group">
@@ -136,8 +96,7 @@
 
 
 
-
-<!-- Modal CONTATO -->
+ <!-- Modal CONTATO -->
   <div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -181,7 +140,7 @@
             <div class="form-group">
               <label for="message-text" class="col-form-label">Senha</label>
               <input type="password" name="senha" class="form-control" id="recipient-name"><br>
-              <h6>Não possui cadastro? <a href="CadClinica.php" class="badge badge-info">Cadastre-se</a></h6>
+              <h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
               <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Entrar</button>
             </div> 

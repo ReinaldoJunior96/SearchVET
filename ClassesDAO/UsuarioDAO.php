@@ -50,7 +50,8 @@ class UsuarioDAO extends PDOconectar
                 <div class='col-24 my-5'>
                     <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
                     <button type='button' class='btn btn-info float-right'>
-                      Comentários <span class='badge badge-light'>".$NumeroComentarios."</span>
+                      <a href='Comentario.php?logado=".$logado."' class='text-light'>Comentários</a>
+                      <span class='badge badge-light'>".$NumeroComentarios."</span>
                     </button>
                 </div>    
                 <img src='images/".$foto."' class='img-thumbnail float-sm-right rounded mx-auto d-block ' alt='Logo Indisponivel'>
