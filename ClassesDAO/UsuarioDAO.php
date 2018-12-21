@@ -9,6 +9,11 @@ class UsuarioDAO extends PDOconectar
     public function VisualizarPerfil($unica,$logado)
     {
         try {
+
+            $Comentario = $this->conn->prepare("SELECT * FROM comentario WHERE Identificacao='$unica' ORDER BY data_lancamento DESC"); 
+            $Comentario->execute();   
+            $NumeroComentarios = $Comentario->rowCount();
+
             $fichaUnica = $this->conn->prepare("SELECT * FROM enderecos 
                                                 INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
                                                 INNER JOIN informacoes ON clinicas.Identificacao = informacoes.Identificacao
@@ -44,6 +49,9 @@ class UsuarioDAO extends PDOconectar
                 echo "
                 <div class='col-24 my-5'>
                     <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
+                    <button type='button' class='btn btn-info float-right'>
+                      Comentários <span class='badge badge-light'>".$NumeroComentarios."</span>
+                    </button>
                 </div>    
                 <img src='images/".$foto."' class='img-thumbnail float-sm-right rounded mx-auto d-block ' alt='Logo Indisponivel'>
                 <div class='jumbotron jumbotron-fluid'>

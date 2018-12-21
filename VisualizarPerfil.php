@@ -9,13 +9,14 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
-  <title>Olá, mundo!</title>
+  <title>VetMaps</title>
+  <link rel="icon" href="images/iconeVM.png" type="image/x-icon" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">
-      <img src="images/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <i>VetMaps</i>
+      <img src="images/iconeVM.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <i></i>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -62,14 +63,6 @@
                     $Visualizar = new UsuarioDAO();
                     $Visualizar->VisualizarPerfil($_GET['id'],$_GET['logado']);
                     ?>
-
-
-
-
-
-
-
-
     <hr>
     <hr>
     <div class="col-24 text-center">
