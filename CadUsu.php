@@ -14,7 +14,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="#">
       <img src="images/iconeVM.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <i></i>
     </a>
@@ -29,7 +29,7 @@
           <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginClinica"><i class="fas fa-user"></i> Login Clínica</a>
+          <a class="nav-link" href="#" href="#" data-toggle="modal" data-target="#LoginClinica"><i class="fas fa-user"></i> Login Clínica</a>
         </li>
 
         <li class="nav-item dropdown active">
@@ -37,8 +37,8 @@
             <i class="fas fa-address-card"></i> Cadastro
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item active" href="CadClinica.php">Clínica</a>
-            <a class="dropdown-item" href="CadUsu.php">Usuário</a>
+            <a class="dropdown-item" href="CadClinica.php">Clínica</a>
+            <a class="dropdown-item active" href="LoginUsuario.php">Usuário</a>
             <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Algo mais aqui</a> -->
             </div>
@@ -64,18 +64,12 @@
         <h4>Rede de Clínica Veterinarias</h4>
       </div>
     </div> -->
-    <h3 class="text-info my-3">Cadastre sua clínica <i class="fas fa-id-card-alt"></i></h3>
+    <h3 class="text-info my-3">Cadastre-se para dar sua opinião <i class="fas fa-id-card-alt"></i></h3>
     <form method="POST">
       <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Clínica</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
-          <input type="text" name="nomeC" class="form-control" id="inputEmail3" placeholder="">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">CPF/CNPJ</label>
-        <div class="col-sm-10">
-          <input type="number" name="cpf" class="form-control" id="inputEmail3" placeholder="">
+          <input type="text" name="nome" class="form-control" id="inputEmail3" placeholder="">
         </div>
       </div>
       <div class="form-group row">
@@ -93,25 +87,20 @@
       <div class="form-group row">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-info btn-lg">Cadastrar</button>
-          <p class="text-left">Já possui conta? <a href="#" data-toggle="modal" data-target="#LoginClinica" class="badge badge-warning">Faça Login</a></p>  
+          <p class="text-left">Já possui conta? <a href="LoginUsuario.php" class="badge badge-warning">Faça Login</a></p>  
         </div>
       </div>
     </form>
-    <?php
-    if (!empty(@$_POST['cpf'])) {
-      require_once ('Classes/Clinica.php');
-      $novaC = new Clinica();
-      $novaC->setSenha(utf8_decode(@$_POST['senha']));
-      $novaC->setIdentificacao(@$_POST['cpf']);
-      $novaC->setEmail(@$_POST['email']);
-      $novaC->setNomeC(@$_POST['nomeC']);
-      require_once ('ClassesDAO/ClinicaDAO.php');
-      $novaCDAO = new ClinicaDAO();
-      $novaCDAO->cadastrar($novaC);
+    <?php 
+                    require_once ('ClassesDAO/UsuarioDAO.php');
+                    $novoUSU = new UsuarioDAO();
+                    if (!empty($_POST['email'])) {
+                       $novoUSU->CadastrarNormal(@$_POST['nome'],@$_POST['email'],@$_POST['senha']);
+                    }
+                   
 
-    }
-    ?>
 
+                    ?>
     <hr>
     <hr>
     <div class="col-24 text-center">

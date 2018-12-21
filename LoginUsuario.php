@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="236042560158-hrchdmsmkiphvoe5avtulgdl6iqv2sei.apps.googleusercontent.com">
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
@@ -14,7 +16,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="#">
       <img src="images/iconeVM.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <i></i>
     </a>
@@ -29,16 +31,16 @@
           <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginClinica"><i class="fas fa-user"></i> Login Clínica</a>
+          <a class="nav-link" href="#" href="#" data-toggle="modal" data-target="#LoginClinica"><i class="fas fa-user"></i> Login Clínica</a>
         </li>
 
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-address-card"></i> Cadastro
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item active" href="CadClinica.php">Clínica</a>
-            <a class="dropdown-item" href="CadUsu.php">Usuário</a>
+            <a class="dropdown-item" href="CadClinica.php">Clínica</a>
+            <a class="dropdown-item" href="LoginUsuario.php">Usuário</a>
             <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Algo mais aqui</a> -->
             </div>
@@ -64,56 +66,55 @@
         <h4>Rede de Clínica Veterinarias</h4>
       </div>
     </div> -->
-    <h3 class="text-info my-3">Cadastre sua clínica <i class="fas fa-id-card-alt"></i></h3>
+    <h3 class="text-info my-3">Login <i class="fas fa-id-card-alt"></i></h3>
     <form method="POST">
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Clínica</label>
-        <div class="col-sm-10">
-          <input type="text" name="nomeC" class="form-control" id="inputEmail3" placeholder="">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">CPF/CNPJ</label>
-        <div class="col-sm-10">
-          <input type="number" name="cpf" class="form-control" id="inputEmail3" placeholder="">
-        </div>
-      </div>
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">E-mail</label>
         <div class="col-sm-10">
-          <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="">
+          <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="" required="">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Senha</label>
         <div class="col-sm-10">
-          <input type="password" name="senha" class="form-control" id="inputPassword3" placeholder="">
+          <input type="password" name="senha" class="form-control" id="inputPassword3" placeholder="" required="">
         </div>
       </div>
+
       <div class="form-group row">
         <div class="col-sm-10">
-          <button type="submit" class="btn btn-info btn-lg">Cadastrar</button>
-          <p class="text-left">Já possui conta? <a href="#" data-toggle="modal" data-target="#LoginClinica" class="badge badge-warning">Faça Login</a></p>  
+          <button type="submit" class="btn btn-info btn-lg">Login</button>        
+          <p class="text-left">Não possui conta? <a href="CadUsu.php" class="badge badge-warning">Cadastre-se</a></p>  
         </div>
+        
       </div>
     </form>
-    <?php
-    if (!empty(@$_POST['cpf'])) {
-      require_once ('Classes/Clinica.php');
-      $novaC = new Clinica();
-      $novaC->setSenha(utf8_decode(@$_POST['senha']));
-      $novaC->setIdentificacao(@$_POST['cpf']);
-      $novaC->setEmail(@$_POST['email']);
-      $novaC->setNomeC(@$_POST['nomeC']);
-      require_once ('ClassesDAO/ClinicaDAO.php');
-      $novaCDAO = new ClinicaDAO();
-      $novaCDAO->cadastrar($novaC);
-
-    }
-    ?>
-
     <hr>
-    <hr>
+    <p class="text-left">Se preferir, utilize sua conta GOOGLE</p>
+    <div class="g-signin2 float-center" data-onsuccess="onSignIn"></div>
+    <?php 
+                    require_once ('ClassesDAO/UsuarioDAO.php');
+                    $novoUSU = new UsuarioDAO();
+                    if (!empty(@$_POST['email'])) {
+                      $novoUSU->validarLogin(@$_POST['email'],@$_POST['senha']);
+                    
+                    }
+                    
+                    ?>
+                    <script type="text/javascript">
+                      function onSignIn(googleUser) {
+                        var profile = googleUser.getBasicProfile();
+                        var userID = profile.getId();
+                        var userName = profile.getName();
+                        var userImg = profile.getImageUrl();
+                        var userEmail = profile.getEmail();
+                        if (userName !== '') {
+                          //window.location="http://localhost/BootstrapTopzon/BuscarClinicas.php?logado="+userEmail+"";
+                          window.location="http://www.vetmaps.com.br/BuscarClinicas.php?logado="+userEmail+"";
+                        }                     
+                      }                     
+                    </script>
+                    <hr>
     <div class="col-24 text-center">
      <div class="text-center">
       <div class="btn-group" role="group">

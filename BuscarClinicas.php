@@ -9,13 +9,14 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
-  <title>Olá, mundo!</title>
+  <title>VetMaps</title>
+  <link rel="icon" href="images/iconeVM.png" type="image/x-icon" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">
-      <img src="images/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <i>VetMaps</i>
+      <img src="images/iconeVM.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <i></i>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -64,7 +65,8 @@
       </div>
     </div> -->
     <h4 class="text-secondary my-3">Olá, o que você gostaria de buscar? <i class="fas fa-search"></i></h4>
-    <form>
+    <form method="GET">
+      <?php echo "<input type='hidden' name='logado' value=".@$_GET['logado'].">"; ?>
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label"><i>Qual bairro deseja buscar o serviço?</i></label>
         <div class="col-sm-10">
@@ -91,7 +93,14 @@
     <?php
     require_once('ClassesDAO/UsuarioDAO.php');      
     $verRank = new UsuarioDAO();
-    $verRank->filtro(@$_GET['filtro'],@$_GET['filtro2'],@$_GET['logado']);
+    if (!empty($_GET['logado'])) {
+      $verRank->filtro(@$_GET['filtro'],@$_GET['filtro2'],@$_GET['logado']);
+    }elseif (empty($_GET['logado'])) {
+      echo "<script language=\"javascript\">window.location='LoginUsuario.php'</script>";
+    }
+      
+    
+    
     ?>
     <hr>
     <hr>
@@ -160,7 +169,7 @@
             <div class="form-group">
               <label for="message-text" class="col-form-label">Senha</label>
               <input type="password" name="senha" class="form-control" id="recipient-name"><br>
-              <h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
+              <h6>Não possui cadastro? <a href="CadClinica.php" class="badge badge-info">Cadastre-se</a></h6>
               <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Entrar</button>
             </div> 

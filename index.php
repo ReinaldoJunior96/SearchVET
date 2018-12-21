@@ -9,13 +9,13 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
-  <title>Olá, mundo!</title>
+  <title>VetMaps</title>
+  <link rel="icon" href="images/iconeVM.png" type="image/x-icon" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="#">
-      <img src="imagens/cachorro.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <i>VetMaps</i>
+    <a class="navbar-brand">
+      <img src="images/iconeVM.png" width="30" height="30" class="d-inline-block align-top" alt="">      
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -37,7 +37,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="CadClinica.php">Clínica</a>
-            <a class="dropdown-item" href="LoginUsuario.php">Usuário</a>
+            <a class="dropdown-item" href="CadUsu.php">Usuário</a>
             <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Algo mais aqui</a> -->
             </div>
@@ -72,7 +72,6 @@
         <img class="img-fluid d-block" src="images/banner.png" alt="Primeiro Slide">
         <div class="carousel-caption d-none d-md-block">
           <h5></h5>
-          <button type="button" class="btn btn-warning btn-lg">Buscar Clínicas</button>
         </div>
       </div>
       <!-- <div class="carousel-item">
@@ -105,13 +104,13 @@
 
 
 
-    <div class="container">
-      <div class="row">
+    <div class="container my-5">
+      <!-- <div class="row">
         <div class="col-12 text-center my-5">
           <h1 class="text-info"><i>VETMAPS</i></h1>
           <h4>Rede de Clínica Veterinarias</h4>
         </div>
-      </div>
+      </div> -->
 
       <div class="col-12">
         <h4>Quem somos?</h4>
@@ -214,7 +213,7 @@
             <div class="form-group">
               <label for="message-text" class="col-form-label">Senha</label>
               <input type="password" name="senha" class="form-control" id="recipient-name"><br>
-              <h6>Não possui cadastro? <a href="#" class="badge badge-info">Cadastre-se</a></h6>
+              <h6>Não possui cadastro? <a href="CadClinica.php" class="badge badge-info">Cadastre-se</a></h6>
               <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Entrar</button>
             </div> 

@@ -382,10 +382,11 @@ class UsuarioDAO extends PDOconectar
     
     public function CadastrarNormal($nome,$email,$senha){
         $insertC = $this->conn->prepare("INSERT INTO usuario(Nome,Email,Senha)VALUES(?,?,?)");
-        $insertC->bindValue(1, $nome);
-        $insertC->bindValue(2, $email);
-        $insertC->bindValue(3, $senha);
+        $insertC->bindValue(1, utf8_decode($nome));
+        $insertC->bindValue(2, utf8_decode($email));
+        $insertC->bindValue(3, utf8_decode($senha));
         $insertC->execute();
+
         require_once ('UsuarioDAO.php');
         $Novo_Busca = new UsuarioDAO();
         $Novo_Busca->validarLogin($email,$senha);
@@ -395,11 +396,14 @@ class UsuarioDAO extends PDOconectar
     {
         $Validar = $this->conn->prepare ("SELECT * FROM usuario WHERE Email='$usu' AND Senha='$senha'");
         $Validar->execute();
-        if ($Validar->rowCount() == 1) {
-            session_start();
+        if ($Validar->rowCount() == 1) { 
+            session_start();     
             $_SESSION['login'] = $usu;
             $_SESSION['senha'] = $senha;
-            header("Location:http:BuscarClinica.php?logado=".$usu."");
+            echo "<script language=\"javascript\">window.location='BuscarClinicas.php?logado=".$usu."'</script>";
+            //header("Location:http: BuscarClinicas.php?logado=".$usu."");
+            //var_dump($_SESSION['login']);
+            //var_dump($_SESSION['senha']);
         }elseif ($Validar->rowCount() <= 0) {
             echo "<h1>Usuário Inválido !!</h1>";
             // echo "<script language=\"javascript\">alert(\"Usuário Inválido!!\")</script>";

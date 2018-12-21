@@ -40,7 +40,9 @@ class ClinicaDAO extends PDOconectar
             $insertAt->bindValue(3, $cad->getEmail());
             $insertAt->bindValue(4, "teste");
             $insertAt->execute();
-            echo "<h4 class='text-info my-3'>Sucesso !!</h4";
+            echo "<h4 class='text-info my-3'>Sucesso</h4";
+            
+            
             // require_once ('ClinicaDAO.php');
             // $Login_Direto = new ClinicaDAO();
             // $Login_Direto->validarLoginCad($cad->getEmail(), $cad->getSenha());
