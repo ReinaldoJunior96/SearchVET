@@ -63,6 +63,22 @@
                     $Visualizar = new UsuarioDAO();
                     $Visualizar->VisualizarPerfil($_GET['id'],$_GET['logado']);
                     ?>
+                    <script type='text/javascript'>
+                      (function()
+                      {
+                      if( window.localStorage )
+                      {
+                      if( !localStorage.getItem( 'firstLoad' ) )
+                      {
+                      localStorage[ 'firstLoad' ] = true;
+                      window.location.reload();
+                      } 
+                      else
+                      localStorage.removeItem( 'firstLoad' );
+                      }
+                      })();
+
+                      </script>
     <hr>
     <hr>
     <div class="col-24 text-center">
