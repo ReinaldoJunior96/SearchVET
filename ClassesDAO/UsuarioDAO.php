@@ -50,7 +50,8 @@ class UsuarioDAO extends PDOconectar
                 <div class='col-24 my-5'>
                     <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
                     <button type='button' class='btn btn-info float-right'>
-                      Comentários <span class='badge badge-light'>".$NumeroComentarios."</span>
+                      <a href='Comentario.php?logado=".$logado."&id=".$unica."' class='text-light'>Comentários</a>
+                      <span class='badge badge-light'>".$NumeroComentarios."</span>
                     </button>
                 </div>    
                 <img src='images/".$foto."' class='img-thumbnail float-sm-right rounded mx-auto d-block ' alt='Logo Indisponivel'>
@@ -343,25 +344,23 @@ class UsuarioDAO extends PDOconectar
             $BuscarComentario = $this->conn->prepare("SELECT * FROM comentario WHERE Identificacao='$iden' ORDER BY data_lancamento DESC"); 
             $BuscarComentario->execute();         //Comentários Gerais 
             $linhas = $BuscarComentario->fetchAll(PDO::FETCH_OBJ); 
-            echo "
-                <div style='word-wrap: break-word;'>
-                <section>
-                <h3></h3>                    
+            //style='word-wrap: break-word
+            echo "              
                 ";
             foreach ($linhas as $listar) {
                 $comentario = $listar->Comentario;
                 $data = $listar->data_lancamento;
                 $usuario = $listar->Usuario;
                 $id = $listar->id;
-
-                echo "
-                <p class='texto' style='text-align: justify;'>
-                ";
                 if($usuario==$logado) { 
                     echo"
-                    <a style='float:right;' href='./Back/ApagarComentario.php?id=".$id."'>Excluir</a>
-                    <b style=''>".$usuario." - ".date('d-m-Y', strtotime($data))."</b><br>
-                    ".utf8_encode($comentario)." 
+                    <span class='d-block p-2 bg-dark text-white'>".$usuario." ~ ".date('d-m-Y', strtotime($data))." <a class='float-right' href='./Back/ApagarComentario.php?id=".$id."'><i class='fas fa-trash-alt'></i></a></span>
+                   
+                      <p style='word-wrap: break-word' class='text-justify my-2'>".utf8_encode($comentario)."</p>
+                   
+
+
+                    
                     <hr>";
                 }else{
                     echo"

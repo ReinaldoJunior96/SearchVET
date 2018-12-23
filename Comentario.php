@@ -57,13 +57,25 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container my-5">
+    <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
+    <p class="text-left my-2">Olá <?php echo $_GET['logado'] ?> deixe sua opinião... </p>
+  <form method="get" action="Back/ComentarioRecebe.php">
     <?php
-                    require_once ('ClassesDAO/UsuarioDAO.php');
-                    $Visualizar = new UsuarioDAO();
-                    $Visualizar->VisualizarPerfil($_GET['id'],$_GET['logado']);
-                    ?>
-                    <script type='text/javascript'>
+                      echo "<input type='hidden' name='id' value=".$_GET['id'].">";
+                      echo "<input type='hidden' name='usuario' value=".$_GET['logado'].">";
+                      ?>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1"><i>Deixe sua opinião</i></label>
+    <textarea name="comentario" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-info btn-lg">Enviar</button>
+        </div>
+      </div>
+</form>
+<script type='text/javascript'>
                       (function()
                       {
                       if( window.localStorage )
@@ -79,8 +91,12 @@
                       })();
 
                       </script>
-    <hr>
-    <hr>
+                    <?php
+                    require_once ('ClassesDAO/UsuarioDAO.php');
+                    $comentario = new UsuarioDAO();
+                    $comentario->BuscarComentario($_GET['id'],$_GET['logado']);
+                    ?>
+
     <div class="col-24 text-center">
      <div class="text-center">
       <div class="btn-group" role="group">
