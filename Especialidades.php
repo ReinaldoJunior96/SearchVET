@@ -70,39 +70,75 @@ $status = $_SESSION['status'];
 
 <div class='container my-5'>
 	<!-- Botão dropleft padrão -->
-	<h3>Atualize seu perfil</h3>
+	<h3>Selecione suas Especilidades</h3>
 	<div class="dropdown float-sm-right">
 		<button class="btn btn-info dropdown-toggle my-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Menu
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item active" href="Perfil.php">Contato</a>
+			<a class="dropdown-item" href="Perfil.php">Contato</a>
 			<a class="dropdown-item" href="EditarEndereco.php">Endereço</a>
 			<a class="dropdown-item" href="EditarPerguntas.php">Informações</a>
 			<a class="dropdown-item" href="AddLogo.php">Logomarca</a>
-			<a class="dropdown-item" href="Especialidades.php">Especialidades</a>
+			<a class="dropdown-item active" href="Especialidades.php">Especialidades</a>
 			<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="Back/Sair.php">Sair</a>
 		</div>
 	</div>
-	<?php		
-	require_once ('ClassesDAO/ClinicaDAO.php');
-	$PerfilC = new ClinicaDAO();	
-	if ($status == 'teste') {
-		echo "
-		<p class='text-sm-left'>Você está em período de teste durante 7 dias, aproveite</p>
-		";
-		$PerfilC->Logado($logado);
-	}elseif ($status == 'pago') {										
-		$PerfilC->Logado($logado);
-	}elseif ($status == 'naopago') {										
-		echo "Período de teste finalizado, entre em contato conosco ou realiza o pagamento do seu boleto.";
-	}		
+	<form action="" method="POST">
+		<select class="custom-select custom-select-lg mb-3" name="espec" required="">
+  			<option>Selecione...</option>
+  			<option value="Acupuntura">Acupuntura</option>
+  			<option value="Analises Laboratoriais">Análises Laboratoriais</option>
+  			<option value="Cardiologia">Cardiologia</option>
+  			<option value="Dermatologia">Dermatologia</option>
+  			<option value="Diagnostico por Imagem">Diagnóstico por Imagem</option>
+  			<option value="Endocrinologia">Endocrinologia</option>
+  			<option value="Geriatria">Geriatria</option>
+  			<option value="Neonatologia">Neonatologia</option>
+  			<option value="Nefrologia">Nefrologia</option>
+  			<option value="Neurologia">Neurologia</option>
+  			<option value="Odontologia">Odontologia</option>
+  			<option value="Oftalmologia">Oftalmologia</option>
+  			<option value="Oncologia">Oncologia</option>
+  			<option value="Ortopedia">Ortopedia</option>
+  			<option value="Traumatologia">Traumatologia</option>  			
+		</select>
+		<div class='form-group row'>
+                <div class='col-sm-10'>
+                    <button type='submit' class='btn btn-info btn-lg'>Enviar</button>
+                </div>
+            </div>
 
-	?>
+	</form>
+  <?php   
+  require_once ('ClassesDAO/EspecialidadeDAO.php');
+  $Especildiade = new EspecialidadeDAO();  
+  if (!empty($_POST['espec'])) {
+    $Especildiade->especialidades($logado,@$_POST['espec']);
+  }
+  $Especildiade->buscarespecialidades($logado)
+  ?>
+
+<!-- 
+Acupuntura
+análises laboratoriais
+Cardiologia
+dermatologia
+Diagnóstico por imagem
+Endocrinologia
+Geriatria
+nefrologia
+neurologia
+Odontologia
+oftalmologia
+Oncologia
+Ortopedia
+pediatria
+traumatologia -->
 
 </div>
-<script type='text/javascript'>
+<!-- <script type='text/javascript'>
 	(function()
 	{
 		if( window.localStorage )
@@ -117,7 +153,7 @@ $status = $_SESSION['status'];
 		}
 	})();
 
-</script>
+</script> -->
 
 
 

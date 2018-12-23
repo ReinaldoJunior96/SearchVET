@@ -404,9 +404,9 @@ class UsuarioDAO extends PDOconectar
         $Validar = $this->conn->prepare ("SELECT * FROM usuario WHERE Email='$usu' AND Senha='$senha'");
         $Validar->execute();
         if ($Validar->rowCount() == 1) { 
-            session_start();     
-            $_SESSION['login'] = $usu;
-            $_SESSION['senha'] = $senha;
+            //session_start();     
+            //$_SESSION['login'] = $usu;
+            //$_SESSION['senha'] = $senha;
             echo "<script language=\"javascript\">window.location='BuscarClinicas.php?logado=".$usu."'</script>";
             //header("Location:http: BuscarClinicas.php?logado=".$usu."");
             //var_dump($_SESSION['login']);
