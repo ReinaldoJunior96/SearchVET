@@ -22,7 +22,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    aaaaaaaaaaaaaaaaaaaaaaaaaa
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -96,7 +96,7 @@
       <div class="form-group row">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-info btn-lg">Cadastrar</button>
-          <p class="text-left">Já possui conta? <a href="#" data-toggle="modal" data-target="#LoginClinica" class="badge badge-warning">Faça Login</a></p>  
+          <p class="text-left">Já possui conta? <a href="#" data-toggle="modal" data-target="#LoginClinica" class="badge badge-warning">Faça Login</a></p>
         </div>
       </div>
     </form> -->
@@ -171,12 +171,12 @@
               <h6>Não possui cadastro? <a href="CadClinica.php" class="badge badge-info">Cadastre-se</a></h6>
               <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Entrar</button>
-            </div> 
-            </div>     
+            </div>
+            </div>
           </form>
         </div>
       </div>
-    </div>      
+    </div>
   </div>
 <!-- JavaScript (Opcional) -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
