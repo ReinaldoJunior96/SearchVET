@@ -34,11 +34,12 @@ class ClinicaDAO extends PDOconectar
             $insertL->bindValue(1, $cad->getIdentificacao());
             $insertL->execute();
 
-            $insertAt = $this->conn->prepare("INSERT INTO autorizado(Nome,Cpf_Cnpj,Email,Status)VALUES(?,?,?,?)");
+            $insertAt = $this->conn->prepare("INSERT INTO autorizado(Nome,Cpf_Cnpj,Email,Status,Data_Cancelamento)VALUES(?,?,?,?,?)");
             $insertAt->bindValue(1, $cad->getNomeC());
             $insertAt->bindValue(2, $cad->getIdentificacao());
             $insertAt->bindValue(3, $cad->getEmail());
             $insertAt->bindValue(4, "teste");
+            $insertAt->bindValue(5, date('Y-m-d', strtotime(' + 7 days')));
             $insertAt->execute();
             echo "<h4 class='text-info my-3'>Sucesso</h4";
             
@@ -88,26 +89,33 @@ class ClinicaDAO extends PDOconectar
             $Verifica_Status = $this->conn->prepare ("SELECT * FROM autorizado WHERE Email='$usu'");
             $Verifica_Status->execute();
             $linhas = $Verifica_Status->fetchAll(PDO::FETCH_OBJ);
-            foreach ($linhas as $listar) {$status = $listar->Status;}
+            foreach ($linhas as $listar) {$status = $listar->Status; $dataC = $listar->Data_Cancelamento; $dataI = $listar->Data;}
+                $dataHoje = date('Y-m_d');
                 if ($Validar->rowCount() == 1) {
-                    if($status == 'teste') {    
+                    if($status == 'teste' AND $dataHoje>$dataC) {    
+                        session_start();
+                        $_SESSION['login'] = $id;
+                        $_SESSION['senha'] = $senha;
+                        $_SESSION['status'] = "naopago";
+                        header("Location: ../Perfil.php");
+                    }elseif ($status == 'teste' AND $dataHoje<$dataC) {
                         session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "teste";
                         header("Location: ../Perfil.php");
                     }elseif ($status == 'pago') {
-                        //session_start();
+                        session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "pago";
-                        //header("Location: Perfil.php");
+                        header("Location: ../Perfil.php");
                     }elseif ($status == 'naopago') {
-                        //session_start();
+                        session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
                         $_SESSION['status'] = "naopago";
-                        //header("Location: Perfil.php");                    
+                        header("Location: ../Perfil.php");                    
                     }
                 }elseif ($Validar->rowCount() == 0) {
                     echo "<h3>Usuário ou senha Inválido</a></h3>";
@@ -396,7 +404,33 @@ class ClinicaDAO extends PDOconectar
                 $Premios->execute();
                 echo "<script language=\"javascript\">window.history.back();</script>";
     }
-    
+
+
+    public function teste()
+    {        
+        $Pega_Email = $this->conn->prepare("SELECT * FROM autorizado WHERE Email='reinaldojunior272@gmail.com'");
+        $Pega_Email->execute();
+        $linhasP = $Pega_Email->fetchAll(PDO::FETCH_OBJ);
+        foreach ($linhasP as $listar) {
+            $data = $listar->Data;    
+        }
+        $datahh = date('d/m/Y', strtotime(' + 0 days'));
+        echo "$datahh";
+        //echo "$datahh";
+        // date($data,'Ymd H:i:s');
+        // echo "<br>";
+        // $today = date("Y-m-d");  
+        // $todaysete = date("Ymd")-7;  
+        // echo "Data de hoje menos 7 : $todaysete <br>";
+        // echo "Data de hoje : $today <br>";
+
+
+        // if ($todaysete<=$data) {
+        //     echo "assinatura canncelada";
+        // }elseif ($todaysete>=$data) {
+        //     echo "nada acontece";
+        // }
+    }
 
 }
 

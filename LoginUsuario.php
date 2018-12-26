@@ -110,7 +110,7 @@
                         var userEmail = profile.getEmail();
                         if (userName !== '') {
                           //window.location="http://localhost/BootstrapTopzon/BuscarClinicas.php?logado="+userEmail+"";
-                          window.location="http://www.vetmaps.com.br/BuscarClinicas.php?logado="+userEmail+"";
+                          window.location="BuscarClinicas.php?logado="+userEmail+"";
                         }                     
                       }                     
                     </script>

@@ -22,7 +22,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -67,7 +67,7 @@
     <!-- https://www.boletobancario.com/boletofacil/integration/api/v1/issue-charge?token=59BF8CBE9D9FE99243DB00C70E8D6593933C38E079519E5F90D2425C5E5B9066&description=Pagamento Plataforma VetMaps&amount=60.00&payerName=Reinaldo+Junior&payerCpfCnpj=02798175330&payerEmail=vetmapsfinanceiro@gmail.com&installments=1 -->
     <!-- <img src="images/vender.png" class="img-fluid my-3 rounded">
     <h3 class="text-info my-3">Cadastre sua clínica <i class="fas fa-id-card-alt"></i></h3>
-
+    
     <form method="POST">
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Clínica</label>
@@ -100,6 +100,13 @@
         </div>
       </div>
     </form> -->
+
+
+    <?php
+    require_once ('ClassesDAO/ClinicaDAO.php');
+    $Teste = new ClinicaDAO();
+    $Teste->teste();
+    ?>
     <hr>
     <hr>
     <div class="col-24 text-center">
