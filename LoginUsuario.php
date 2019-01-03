@@ -116,16 +116,16 @@
                     </script>
                     <hr>
     <div class="col-24 text-center">
-     <div class="text-center">
-      <div class="btn-group" role="group">
-        <a class="btn btn-primary" href="#"><i class="fab fa-facebook"></i> Facebook</a>
-        <a class="btn btn-warning" href="#"><i class="fab fa-instagram"></i> Instagram</a>
-        <a class="btn btn-info" href="#"><i class="fab fa-twitter"></i> Twitter</a>
+       <div class="text-center">
+        <div class="btn-group" role="group">
+          <!-- <a class="btn btn-primary" href="#"><i class="fab fa-facebook"></i> Facebook</a> -->
+          <a class="btn btn-info" href="https://instagram.com/vetmaps_s?utm_source=ig_profile_share&igshid=1nh7mxp6cof8t" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+         <!--  <a class="btn btn-info" href="#"><i class="fab fa-twitter"></i> Twitter</a> -->
+        </div>
       </div>
+      <p class="text-primary"><i>VETMAPS</i> - Rede de Clínicas Veterinárias<br>  &copy;Todos os direitos reservados</p>
     </div>
-    <p class="text-primary"><i>VETMAPS</i> - Rede de Clínicas Veterinárias</p>
   </div>
-</div>
 
 
 
