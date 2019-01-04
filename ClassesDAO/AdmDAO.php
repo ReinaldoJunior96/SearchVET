@@ -20,8 +20,69 @@ class AdmDAO extends PDOconectar
       echo "<script language=\"javascript\">alert(\"Usuário Inválido!!\")</script>";
       echo "<script language=\"javascript\">window.history.back();</script>";
     }
-
   }
+
+  public function Receber()
+  {
+    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste'");
+    $Validar->execute();
+    $valor = $Validar->rowCount();
+    $receber = $valor*50;
+    echo "<h3 class='font-weight-medium text-right mb-0'>R$ ".$receber.",00</h3>'";
+  }
+
+  public function ContarClinicas()
+  {
+    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste'");
+    $Validar->execute();
+    $valor = $Validar->rowCount();
+    return $valor;
+  }
+
+  public function Metas()
+  {
+    $Meta = 500;
+    $Contar =  new AdmDAO();
+    $TotalClinicas = $Contar->ContarClinicas();
+
+    $aux = $TotalClinicas*100;
+    $div = $aux/$Meta;
+    $Pmeta = $div.'%';
+    return $Pmeta;
+  }
+
+  public function CadastroRecente()
+  {
+    $Recente = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste' ORDER BY ID DESC LIMIT 0,5");
+    $Recente->execute();
+    $linhas = $Recente->fetchAll(PDO::FETCH_OBJ);
+    foreach ($linhas as $listar) {
+        $cpf_cnpj = $listar->Cpf_Cnpj;
+        $nome = $listar->Nome;
+        $email = $listar->Email;
+        echo"
+        <tr>
+        <td class='font-weight-medium'>
+        ".$nome."
+        </td>
+        <td>
+        ".$cpf_cnpj."
+        </td>
+        <td>
+        ".$email."
+        </td>
+        <td>
+        <label class='badge badge-danger'>
+        <i class='fa fa-spinner fa-spin'></i>
+        Aguardando Pagamento
+        </label>
+        </td>
+        </tr>
+        </tr>
+        ";
+      }
+  }
+
   public function Filtro($email,$valor)
   {
     if (empty($email) && !empty($valor == 'teste')) {
@@ -29,18 +90,7 @@ class AdmDAO extends PDOconectar
       $Filtro->execute();
       $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
       echo "
-      <div class='table-wrapper'>
-      <table>
-      <thead>
-      <tr>
-      <th><b>Nome</b></th>
-      <th>Cpf/Cnpj</th>
-      <th>Data Inscrição</th>
-      <th></th>
-      <th></th>
-      </tr>
-      </thead>
-      <tbody>
+      
 
       ";
       foreach ($linhas as $listar) {
@@ -49,37 +99,17 @@ class AdmDAO extends PDOconectar
         $data = $listar->Data;
         $email = $listar->Email;
         echo"
-        <tr>
-        <td>".$nome."</td>
-        <td>".$email."</td>
-        <td>".$cpf_cnpj."</td>
-        <td>".date('d/m/Y', strtotime($data))."</td>
-        <td><a href='../Adm/Liberar.php?liberar=".$email."'><button style='background-color:#CC6F83; font-size: 13px;'>Liberar</button></a></td>
-        <td><a href='../Adm/Cancelar.php?cancelar=".$email."'><button style='background-color:red; font-size: 13px;'>Bloquear</button></a></td>
-        </tr>
+        
         ";
       }
       echo "
-
-      </tbody>
-      </table>
-      </div>";
+        ";
     }elseif (empty($email) && !empty($valor == 'naopago')) {
       $Filtro = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='naopago'");
       $Filtro->execute();
       $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
       echo "
-      <div class='table-wrapper'>
-      <table>
-      <thead>
-      <tr>
-      <th>Nome</th>
-      <th>Cpf/Cnpj</th>
-      <th>Data</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
+      
       ";
       foreach ($linhas as $listar) {
         $cpf_cnpj = $listar->Cpf_Cnpj;
@@ -87,35 +117,17 @@ class AdmDAO extends PDOconectar
         $data = $listar->Data;
         $email = $listar->Email;
         echo"
-        <td>".$nome."</td>
-        <td>".$email."</td>
-        <td>".$cpf_cnpj."</td>
-        <td>".date('d-m-Y', strtotime($data))."</td>
-        <td><a href='../Adm/Liberar.php?liberar=".$email."'><button style='background-color:#CC6F83; font-size: 13px;'>Liberar</button></a></td>
-        <td><a href='../Adm/Cancelar.php?cancelar=".$email."'><button style='background-color:red; font-size: 13px;'>Bloquear</button></a></td>
+        
         ";
       }
       echo "
-      </tr>
-      </tbody>
-      </table>
-      </div>";
+      ";
     }elseif (!empty($email) && empty($valor)) {
       $Filtro = $this->conn->prepare ("SELECT * FROM autorizado WHERE Email='$email'");
       $Filtro->execute();
       $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
       echo "
-      <div class='table-wrapper'>
-      <table>
-      <thead>
-      <tr>
-      <th>Nome</th>
-      <th>Cpf/Cnpj</th>
-      <th>Data</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
+      
       ";
       foreach ($linhas as $listar) {
         $cpf_cnpj = $listar->Cpf_Cnpj;
@@ -123,46 +135,34 @@ class AdmDAO extends PDOconectar
         $data = $listar->Data;
         $email = $listar->Email;
         echo"
-        <td>".$nome."</td>
-        <td>".$email."</td>
-        <td>".$cpf_cnpj."</td>
-        <td>".date('d-m-Y', strtotime($data))."</td>
-        <td><a href='../Adm/Liberar.php?liberar=".$email."'><button style='background-color:#CC6F83; font-size: 13px;'>Liberar</button></a></td>
-        <td><a href='../Adm/Cancelar.php?cancelar=".$email."'><button style='background-color:red; font-size: 13px;'>Bloquear</button></a></td>
+        
         ";
       }
       echo "
-      </tr>
-      </tbody>
-      </table>
-      </div>";
+      ";
     }
-
   }
-
-
-
-
 
   public function LiberarAcesso($email)
   {
     $Liberar = $this->conn->prepare("UPDATE autorizado SET
       Status=?
       WHERE Email='$email'");
-      $Liberar->bindValue(1, "pago");
-      $Liberar->execute();
-      echo "<script language=\"javascript\">window.history.back(-8);</script>";
-    }
-    public function CancelarAcesso($email)
-    {
-      $Cancelar = $this->conn->prepare("UPDATE autorizado SET
-        Status=?
-        WHERE Email='$email'");
-        $Cancelar->bindValue(1, "naopago");
-        $Cancelar->execute();
+    $Liberar->bindValue(1, "pago");
+    $Liberar->execute();
+    echo "<script language=\"javascript\">window.history.back(-8);</script>";
+  }
+
+  public function CancelarAcesso($email)
+  {
+    $Cancelar = $this->conn->prepare("UPDATE autorizado SET
+      Status=?
+      WHERE Email='$email'");
+    $Cancelar->bindValue(1, "naopago");
+    $Cancelar->execute();
         //echo "<script language=\"javascript\">window.history.back(-2);</script>";
-      }
+  }
 
-    }
+}
 
-    ?>
+?>
