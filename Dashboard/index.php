@@ -348,7 +348,7 @@
                             E-mail
                           </th>
                           <th>
-                            Status
+                            Status Pagamento
                           </th>
                         </tr>
                       </thead>

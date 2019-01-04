@@ -62,22 +62,26 @@ class AdmDAO extends PDOconectar
         $email = $listar->Email;
         echo"
         <tr>
-        <td class='font-weight-medium'>
-        ".$nome."
-        </td>
-        <td>
-        ".$cpf_cnpj."
-        </td>
-        <td>
-        ".$email."
-        </td>
-        <td>
-        <label class='badge badge-danger'>
-        <i class='fa fa-spinner fa-spin'></i>
-        Aguardando Pagamento
-        </label>
-        </td>
-        </tr>
+          <td class='font-weight-medium'>
+          ".$nome."
+          </td>
+          <td>
+            ".$cpf_cnpj."
+          </td>
+          <td>
+            ".$email."
+          </td>
+          <td>
+            <label class='badge badge-danger'>
+              Aguardando...
+              <i class='fa fa-spinner fa-spin'></i>
+            </label>
+          </td>
+          <td>
+            <button type='button' class='btn btn-icons btn-rounded btn-outline-success'>
+              <i class='fa fa-check-circle-o'></i>
+            </button>
+          </td>
         </tr>
         ";
       }
