@@ -1,3 +1,13 @@
+<?php 
+@ob_start();
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+header('location:login.php');
+}
+$logado = $_SESSION['login'];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,7 +27,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 </head>
 
 <body>
@@ -107,18 +117,18 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">Novo Cadastro
+             <!--  <button class="btn btn-success btn-block">Novo Cadastro
                 <i class="mdi mdi-plus"></i>
-              </button>
+              </button> -->
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.php">
-              <i class="menu-icon mdi mdi-television"></i>
-              <span class="menu-title">Dashboard</span>
+              <i class="fa fa-home icon-sm"></i>
+              <span class="menu-title"> &emsp;Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Clínicas</span>
@@ -137,14 +147,14 @@
                 </li>
               </ul>
             </div>
-          </li>
-         <!--  <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <i class="menu-icon mdi mdi-backup-restore"></i>
-              <span class="menu-title">Form elements</span>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-institution icon-sm"></i>
+              <span class="menu-title">&emsp;Clínicas</span>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Charts</span>
@@ -363,7 +373,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 grid-margin stretch-card">
+            <!-- <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h2 class="card-title text-primary mb-5">Metas 2019</h2>
@@ -498,8 +508,9 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  </div>
+                                    </div>-->
+
+                                  </div>                                   
                                   <!-- content-wrapper ends -->
                                   <!-- partial:partials/_footer.html -->
                                   <footer class="footer">

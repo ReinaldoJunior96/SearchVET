@@ -14,7 +14,8 @@ class AdmDAO extends PDOconectar
       session_start();
       $_SESSION['login'] = $usu;
       $_SESSION['senha'] = $senha;
-      header("Location: AdmLogado.php");
+      echo "<script language=\"javascript\">window.location.href = 'index.php'</script>";
+      // header("Location: AdmLogado.php");
 
     }elseif ($Validar->rowCount() <= 0) {
       echo "<script language=\"javascript\">alert(\"Usuário Inválido!!\")</script>";
@@ -78,9 +79,9 @@ class AdmDAO extends PDOconectar
             </label>
           </td>
           <td>
-            <button type='button' class='btn btn-icons btn-rounded btn-outline-success'>
-              <i class='fa fa-check-circle-o'></i>
-            </button>
+            <a href='#'><button type='button' class='btn btn-outline-success btn-fw'>
+              <i class='fa fa-check'></i>Liberar
+            </button></a>
           </td>
         </tr>
         ";
