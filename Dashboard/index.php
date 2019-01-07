@@ -39,7 +39,7 @@ $logado = $_SESSION['login'];
           <!-- <img src="../images/logomarca.png" alt="logo" /> --> <!-- logomarca -->
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
-          <img src="images/logo-mini.svg" alt="logo" />
+          <img src="../images/iconeVM.png" alt="logo" /><!-- logomini -->
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -60,11 +60,11 @@ $logado = $_SESSION['login'];
         </ul> -->
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <!-- <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">olá, Reinaldo Júnior</span>
               <img class="img-xs rounded-circle" src="images/faces/face1.jpg" alt="Profile image">
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            </a> -->
+           <!--  <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
                 <div class="d-flex border-bottom">
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
@@ -78,19 +78,19 @@ $logado = $_SESSION['login'];
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
-                Manage Accounts
+                <a class="dropdown-item mt-2">
+                  Manage Accounts
+                </a>
+                <a class="dropdown-item">
+                  Change Password
+                </a>
+                <a class="dropdown-item">
+                  Check Inbox
+                </a>
+              <a class="dropdown-item" href="#">
+                Sair
               </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
+            </div> -->
           </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -107,25 +107,34 @@ $logado = $_SESSION['login'];
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="images/faces/face1.jpg" alt="profile image">
+                  <img src="images/faces/perfil.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Reinaldo Júnior</p>
                   <div>
-                    <small class="designation text-muted">Perfil</small>
                     <span class="status-indicator online"></span>
+                    <small class="designation text-muted">Online</small>
+                    
                   </div>
                 </div>
               </div>
-             <!--  <button class="btn btn-success btn-block">Novo Cadastro
-                <i class="mdi mdi-plus"></i>
-              </button> -->
+              <a href="../Adm/Encerrar.php">
+                <button class="btn btn-danger btn-block">Sair
+                  <i class="fa fa-power-off "></i>
+                </button>
+              </a>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="fa fa-home icon-sm"></i>
               <span class="menu-title"> &emsp;Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Clinicas.php">
+              <i class="fa fa-institution icon-sm"></i>
+              <span class="menu-title">&emsp;Clínicas</span>
             </a>
           </li>
           <!-- <li class="nav-item">
@@ -373,7 +382,7 @@ $logado = $_SESSION['login'];
                 </div>
               </div>
             </div>
-            <!-- <div class="col-lg-12 grid-margin stretch-card">
+             <!-- <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h2 class="card-title text-primary mb-5">Metas 2019</h2>
@@ -448,7 +457,7 @@ $logado = $_SESSION['login'];
                               <div class="ticket-actions col-md-2">
                                 <div class="btn-group dropdown">
                                   <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Manage
+                                    teste
                                   </button>
                                   <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">
@@ -508,7 +517,7 @@ $logado = $_SESSION['login'];
                                           </div>
                                         </div>
                                       </div>
-                                    </div>-->
+                                    </div> -->
 
                                   </div>                                   
                                   <!-- content-wrapper ends -->
@@ -516,7 +525,7 @@ $logado = $_SESSION['login'];
                                   <footer class="footer">
                                     <div class="container-fluid clearfix">
                                       <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-                                        <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+                                        <!-- <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. --> All rights reserved.</span>
                                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
                                           <i class="mdi mdi-heart text-danger"></i>
                                           <i>VETMAPS - Rede de Clínicas Veterinárias</i>

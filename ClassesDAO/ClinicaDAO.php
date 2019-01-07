@@ -89,14 +89,18 @@ class ClinicaDAO extends PDOconectar
             $Verifica_Status = $this->conn->prepare ("SELECT * FROM autorizado WHERE Email='$usu'");
             $Verifica_Status->execute();
             $linhas = $Verifica_Status->fetchAll(PDO::FETCH_OBJ);
-            foreach ($linhas as $listar) {$status = $listar->Status; $dataC = $listar->Data_Cancelamento; $dataI = $listar->Data;}
-                $dataHoje = date('Y-m_d');
+            foreach ($linhas as $listar) {
+                $status = $listar->Status;
+                $dataC = $listar->Data_Cancelamento;
+                $dataI = $listar->Data;
+            }
+                $dataHoje = date('Y-m-d');
                 if ($Validar->rowCount() == 1) {
                     if($status == 'teste' AND $dataHoje>$dataC) {    
                         session_start();
                         $_SESSION['login'] = $id;
                         $_SESSION['senha'] = $senha;
-                        $_SESSION['status'] = "naopago";
+                        $_SESSION['status'] = "naopago"; //asda
                         header("Location: ../Perfil.php");
                     }elseif ($status == 'teste' AND $dataHoje<$dataC) {
                         session_start();

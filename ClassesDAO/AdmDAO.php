@@ -25,7 +25,7 @@ class AdmDAO extends PDOconectar
 
   public function Receber()
   {
-    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste'");
+    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='pago'");
     $Validar->execute();
     $valor = $Validar->rowCount();
     $receber = $valor*50;
@@ -34,7 +34,7 @@ class AdmDAO extends PDOconectar
 
   public function ContarClinicas()
   {
-    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste'");
+    $Validar = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='pago'");
     $Validar->execute();
     $valor = $Validar->rowCount();
     return $valor;
@@ -79,73 +79,61 @@ class AdmDAO extends PDOconectar
             </label>
           </td>
           <td>
-            <a href='#'><button type='button' class='btn btn-outline-success btn-fw'>
-              <i class='fa fa-check'></i>Liberar
-            </button></a>
+            <div class='ticket-actions col-md-2'>
+              <div class='btn-group dropdown'>
+                <button type='button' class='btn btn-primary dropdown-toggle btn-sm' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  Ações
+                </button>
+                <div class='dropdown-menu'>                                   
+                  <div class='dropdown-divider'></div>
+                    <a class='dropdown-item' href='../Adm/Liberar.php?liberar=".$email."'>
+                    <i class='fa fa-check text-success fa-fw'></i>Liberar</a>
+                    <a class='dropdown-item' href='../Adm/Cancelar.php?Cancelar=".$email."'>
+                    <i class='fa fa-times text-danger fa-fw'></i>Cancelar</a>
+                  </div>
+                </div>
+              </div>
           </td>
         </tr>
         ";
       }
   }
 
-  public function Filtro($email,$valor)
+  public function MostrarClinicas()
   {
-    if (empty($email) && !empty($valor == 'teste')) {
-      $Filtro = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='teste' ORDER BY Data desc");
-      $Filtro->execute();
-      $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
-      echo "
-      
-
-      ";
-      foreach ($linhas as $listar) {
+    $Buscar = $this->conn->prepare ("SELECT * FROM autorizado");
+    $Buscar->execute();
+    $linhas = $Buscar->fetchAll(PDO::FETCH_OBJ);
+    foreach ($linhas as $listar) {
         $cpf_cnpj = $listar->Cpf_Cnpj;
         $nome = $listar->Nome;
-        $data = $listar->Data;
         $email = $listar->Email;
+        $status = $listar->Status;
         echo"
-        
+        <tr>
+                <td>".$nome."</td>
+                <td>".$cpf_cnpj."</td>
+                <td>".$email."</td>
+                <td>".$status."</td>
+                <td>
+                  <div class='ticket-actions col-md-2'>
+                    <div class='btn-group dropdown'>
+                    <button type='button' class='btn btn-primary dropdown-toggle btn-sm' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    Ações
+                    </button>
+                    <div class='dropdown-menu'>                                   
+                  <div class='dropdown-divider'></div>
+                    <a class='dropdown-item' href='../Adm/Liberar.php?liberar=".$email."'>
+                    <i class='fa fa-check text-success fa-fw'></i>Liberar</a>
+                    <a class='dropdown-item' href='../Adm/Cancelar.php?Cancelar=".$email."'>
+                    <i class='fa fa-times text-danger fa-fw'></i>Cancelar</a>
+                  </div>
+                </div>
+              </div>
+          </td>
+            </tr>
         ";
       }
-      echo "
-        ";
-    }elseif (empty($email) && !empty($valor == 'naopago')) {
-      $Filtro = $this->conn->prepare ("SELECT * FROM autorizado WHERE Status='naopago'");
-      $Filtro->execute();
-      $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
-      echo "
-      
-      ";
-      foreach ($linhas as $listar) {
-        $cpf_cnpj = $listar->Cpf_Cnpj;
-        $nome = $listar->Nome;
-        $data = $listar->Data;
-        $email = $listar->Email;
-        echo"
-        
-        ";
-      }
-      echo "
-      ";
-    }elseif (!empty($email) && empty($valor)) {
-      $Filtro = $this->conn->prepare ("SELECT * FROM autorizado WHERE Email='$email'");
-      $Filtro->execute();
-      $linhas = $Filtro->fetchAll(PDO::FETCH_OBJ);
-      echo "
-      
-      ";
-      foreach ($linhas as $listar) {
-        $cpf_cnpj = $listar->Cpf_Cnpj;
-        $nome = $listar->Nome;
-        $data = $listar->Data;
-        $email = $listar->Email;
-        echo"
-        
-        ";
-      }
-      echo "
-      ";
-    }
   }
 
   public function LiberarAcesso($email)
@@ -155,7 +143,7 @@ class AdmDAO extends PDOconectar
       WHERE Email='$email'");
     $Liberar->bindValue(1, "pago");
     $Liberar->execute();
-    echo "<script language=\"javascript\">window.history.back(-8);</script>";
+    echo "<script language=\"javascript\">window.location.href = '../Dashboard/index.php'</script>";
   }
 
   public function CancelarAcesso($email)
@@ -165,7 +153,7 @@ class AdmDAO extends PDOconectar
       WHERE Email='$email'");
     $Cancelar->bindValue(1, "naopago");
     $Cancelar->execute();
-        //echo "<script language=\"javascript\">window.history.back(-2);</script>";
+    echo "<script language=\"javascript\">window.location.href = '../Dashboard/index.php'</script>";
   }
 
 }

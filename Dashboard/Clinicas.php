@@ -1,3 +1,13 @@
+<?php 
+@ob_start();
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+header('location:login.php');
+}
+$logado = $_SESSION['login'];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,6 +21,8 @@
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
   <link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -29,7 +41,7 @@
           <!-- <img src="../images/logomarca.png" alt="logo" /> --> <!-- logomarca -->
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
-          <img src="images/logo-mini.svg" alt="logo" />
+          <img src="" alt="logo" /> <!-- logomini -->
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -50,11 +62,11 @@
         </ul> -->
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <!-- <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">olá, Reinaldo Júnior</span>
               <img class="img-xs rounded-circle" src="images/faces/face1.jpg" alt="Profile image">
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            </a> -->
+           <!--  <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
                 <div class="d-flex border-bottom">
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
@@ -68,19 +80,19 @@
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
-                Manage Accounts
+                <a class="dropdown-item mt-2">
+                  Manage Accounts
+                </a>
+                <a class="dropdown-item">
+                  Change Password
+                </a>
+                <a class="dropdown-item">
+                  Check Inbox
+                </a>
+              <a class="dropdown-item" href="#">
+                Sair
               </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
+            </div> -->
           </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -97,28 +109,37 @@
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="images/faces/face1.jpg" alt="profile image">
+                  <img src="images/faces/perfil.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Reinaldo Júnior</p>
                   <div>
-                    <small class="designation text-muted">Perfil</small>
                     <span class="status-indicator online"></span>
+                    <small class="designation text-muted">Online</small>
+                    
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">Novo Cadastro
-                <i class="mdi mdi-plus"></i>
-              </button>
+              <a href="../Adm/Encerrar.php">
+                <button class="btn btn-danger btn-block">Sair
+                  <i class="fa fa-power-off "></i>
+                </button>
+              </a>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.php">
-              <i class="menu-icon mdi mdi-television"></i>
-              <span class="menu-title">Dashboard</span>
+              <i class="fa fa-home icon-sm"></i>
+              <span class="menu-title"> &emsp;Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="Clinicas.php">
+              <i class="fa fa-institution icon-sm"></i>
+              <span class="menu-title">&emsp;Clínicas</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Clínicas</span>
@@ -127,7 +148,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/buttons.html">Cadastradas</a>
+                  <a class="nav-link" href="Cadastradas.php">Cadastradas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/typography.html">Liberar Acesso</a>
@@ -137,14 +158,14 @@
                 </li>
               </ul>
             </div>
-          </li>
-         <!--  <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <i class="menu-icon mdi mdi-backup-restore"></i>
-              <span class="menu-title">Form elements</span>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-institution icon-sm"></i>
+              <span class="menu-title">&emsp;Clínicas</span>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Charts</span>
@@ -251,86 +272,29 @@
                 <div class="card-body">
                   <h2 class="card-title text-primary mb-5">Clínicas Cadastradas</h2>
                   <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="example" class="table table-bordered">
                       <thead>
                         <tr>
-                          <th>
-                            #
-                          </th>
-                          <th>
-                            First name
-                          </th>
-                          <th>
-                            Amount
-                          </th>
-                          <th>
-                            Sales
-                          </th>
-                          <th>
-                            Deadline
-                          </th>
+                          <th>Nome</th>
+                          <th>CPF/CNPJ</th>
+                          <th>E-mail</th>
+                          <th>Status</th>
+                          <th>Ações</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="font-weight-medium">
-                            1
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td class="text-danger"> 53.64%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            2
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td class="text-success"> 24.56%
-                            <i class="mdi mdi-arrow-up"></i>
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            3
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td class="text-danger"> 28.76%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            <div class="col-sm-6 col-md-4 col-lg-3">
-                      <i class="fa fa-check-square-o"></i> Verificado </div>
-                          </td>
-                        </tr>
+                        <?php  
+                        require_once('../ClassesDAO/AdmDAO.php');
+                        $contarValor = new AdmDAO();
+                        $contarValor->MostrarClinicas();
+                        ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 grid-margin stretch-card">
+           <!--  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h2 class="card-title text-primary mb-5">Tickets Recentes</h2>
@@ -465,14 +429,14 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                   </div>
                                   <!-- content-wrapper ends -->
                                   <!-- partial:partials/_footer.html -->
                                   <footer class="footer">
                                     <div class="container-fluid clearfix">
                                       <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-                                        <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+                                      <!--   <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. --> All rights reserved.</span>
                                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
                                           <i class="mdi mdi-heart text-danger"></i>
                                           <i>VETMAPS - Rede de Clínicas Veterinárias</i>
@@ -501,6 +465,11 @@
                               <!-- Custom js for this page-->
                               <script src="js/dashboard.js"></script>
                               <!-- End custom js for this page-->
+                              <script>
+                                $(document).ready(function() {
+                                  $('#example').DataTable();
+                                } );</script>
+                              
                             </body>
 
                             </html>
