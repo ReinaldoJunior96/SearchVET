@@ -50,43 +50,48 @@ class UsuarioDAO extends PDOconectar
                 $movelE = utf8_decode($pega);
             }
                 echo "
-                <div class='col-24 my-5'>
+                <div class='col-12 my-5'>
                     <button type='button' onClick='window.history.back()' class='btn btn-outline-info btn-lg'>Voltar</button>
                     <button type='button' class='btn btn-info float-right'>
                       <a href='Comentario.php?logado=".$logado."&id=".$unica."' class='text-light'>Comentários</a>
                       <span class='badge badge-light'>".$NumeroComentarios."</span>
                     </button>
                 </div>    
-                <img src='images/".$foto."' class='img-thumbnail float-sm-right rounded mx-auto d-block ' alt='Logo Indisponivel'>
-                <div class='jumbotron jumbotron-fluid'>
-                    <div class='container'>
-                        <h1 class='text-info '>".utf8_encode($nome)."</h1>
-                        <p class='lead'><b>Rua/Avenida:</b> ".utf8_encode($rua)."</p>
-                        <p class='lead'><b>Bairro:</b> ".utf8_encode($bairro)."</p>
-                        <p class='lead'><b>Cidade:</b> ".utf8_encode($cidade).".</p>
-                        <p class='lead'><b>Complemento:</b> ".utf8_encode($complemento)."
-                        <p class='lead'><b>Localização:</b> <a href=".$mapa." target='_blank'> Ver no mapa <i class='fas fa-map-marker-alt'></i></a>.
-
-                        <h4 class='d-block p-0 bg-secondary text-white'>Contato</h4>
-                        <p class='lead'><b>Contato:</b> ".$contato."
-                        <p class='lead'><b>E-mail:</b> ".$email."
-
-                        <h4 class='d-block p-0 bg-secondary text-white'>Disponibilidade</h4>
-                        <p class='lead'><b>Horário de Funcionamento:</b> ".$func."
-
-                        <h4 class='d-block p-0 bg-secondary text-white'>Serviços Adiconais</h4>
-                        <p class='lead'><b>Serviço Móvel: </b>".utf8_encode($servicoM).", ".utf8_encode($movelE)."
-                        <h4 class='d-block p-0 bg-secondary text-white'>Especialidade(s)</h4>
+                <div class='card'>
+                  <img class='card-img-top' src='images/logofalsa.png' alt='Imagem de capa do card'>
+                  <div class='card-body'>
+                    <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                  </div>
+                  <hr>
+                  <h5 class='my-3 text-center'>Endereço</h5>
+                  
+                  <ul class='list-group list-group'>
+                    <li class='list-group-item'><b>Cidade</b> <p class='float-right'>".utf8_encode($cidade)."</p></li>
+                    <li class='list-group-item'><b>Bairro</b> <p class='float-right'>".utf8_encode($bairro)."</p></li>
+                    <li class='list-group-item'><b>Rua/Avenida</b> <p class='float-right'>".utf8_encode($rua)."</p></li>
+                    <li class='list-group-item'><b>Complemento</b> <p class='float-right'>".utf8_encode($complemento)."</p></li>
+                    <li class='list-group-item text-center'><a href=''><i class='fas fa-map-marked-alt'></i>Ver no mapa</a></li>
+                  </ul>
+                  <hr>
+                  <h5 class='my-3 text-center'>Atendimentos</h5>
+                  
+                  <ul class='list-group list-group'>
+                    <li class='list-group-item'><b>Horário Funcionamento</b> <p class='float-right'>".utf8_encode($func)."</p></li>
+                    <li class='list-group-item'><b><i class='fas fa-ambulance'></i> Serviço Móvel</b> <p class='float-right'>".utf8_encode($servicoM).",".utf8_encode($movelE)."</p></li>
+                    <li class='list-group-item'><b>Atendimento Grandes Animais</b> <p class='float-right'>".utf8_encode($Att)."</p></li>
+                  </ul>
+                <h5 class='my-3 text-center'>Especialidades</h5>
+                <ul class='list-group list-group'>
                 "; 
                 foreach ($linhas as $listar) {
                 //tbl especialidade
                 $especialidade = $listar->Especialidade;
                 echo "
-                    
-                        <p class='lead'><i class='fas fa-check-circle'></i> ".$especialidade."
+                    <li class='list-group-item'><b></b> <p class=''><i class='fas fa-angle-right'></i>".utf8_encode($especialidade)."</p></li>
                 ";
                 }
                 echo "
+                </ul>
                     </div>
                 </div>
                 ";
