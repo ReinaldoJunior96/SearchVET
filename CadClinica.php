@@ -64,7 +64,7 @@
         <h4>Rede de Clínica Veterinarias</h4>
       </div>
     </div> -->
-    <img src="images/vender.png" class="img-fluid my-3 rounded">
+    <!-- <img src="images/vender.png" class="img-fluid my-3 rounded"> -->
     <h3 class="text-info my-3">Cadastre sua clínica <i class="fas fa-id-card-alt"></i></h3>
 
     <form method="POST">
