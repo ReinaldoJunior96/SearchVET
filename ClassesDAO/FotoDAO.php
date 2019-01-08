@@ -29,7 +29,7 @@ class FotoDAO extends PDOconectar
                                     WHERE Identificacao='$cpfRecu'");
                 $Premios->bindValue(1, $name_foto);
                 $Premios->execute();
-                echo "<script language=\"javascript\">window.history.back();</script>";
+                //echo "<script language=\"javascript\">window.history.back();</script>";
     }
      public function verFoto($iden)
     {        

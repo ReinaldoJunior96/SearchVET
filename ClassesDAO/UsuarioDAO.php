@@ -43,7 +43,7 @@ class UsuarioDAO extends PDOconectar
                 $foto = $listar->Foto;
                 //tbl especialidade
                 $especialidade = $listar->Especialidade;
-                //<img src='images/terrazoo.png' class='img-thumbnail float-sm-right rounded mx-auto d-block' alt='Imagem responsiva'>
+                //<img class='card-img-top' src='images/".$foto."' alt='Imagem de capa do card'>
             }
             if ($movelE == null) {
                 $pega= "No momento não estamos trabalho com este serviço.";
@@ -58,30 +58,29 @@ class UsuarioDAO extends PDOconectar
                     </button>
                 </div>    
                 <div class='card'>
-                  <img class='card-img-top' src='images/logofalsa.png' alt='Imagem de capa do card'>
+                  
                   <div class='card-body'>
-                    <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                    <h2 class='card-title text-center h2'>".utf8_encode($nome)."</h2>
                   </div>
-                  <hr>
-                  <h5 class='my-3 text-center'>Endereço</h5>
                   
                   <ul class='list-group list-group'>
+                    <li class='list-group-item list-group-item-action list-group-item-info text-center'><b><h5>Endereço</h5></b></li>
                     <li class='list-group-item'><b>Cidade</b> <p class='float-right'>".utf8_encode($cidade)."</p></li>
                     <li class='list-group-item'><b>Bairro</b> <p class='float-right'>".utf8_encode($bairro)."</p></li>
                     <li class='list-group-item'><b>Rua/Avenida</b> <p class='float-right'>".utf8_encode($rua)."</p></li>
                     <li class='list-group-item'><b>Complemento</b> <p class='float-right'>".utf8_encode($complemento)."</p></li>
                     <li class='list-group-item text-center'><a href=''><i class='fas fa-map-marked-alt'></i>Ver no mapa</a></li>
                   </ul>
-                  <hr>
-                  <h5 class='my-3 text-center'>Atendimentos</h5>
                   
                   <ul class='list-group list-group'>
-                    <li class='list-group-item'><b>Horário Funcionamento</b> <p class='float-right'>".utf8_encode($func)."</p></li>
-                    <li class='list-group-item'><b><i class='fas fa-ambulance'></i> Serviço Móvel</b> <p class='float-right'>".utf8_encode($servicoM).",".utf8_encode($movelE)."</p></li>
+                   <li class='list-group-item list-group-item-action list-group-item-info text-center'><b><h5>Serviços Diversos</h5></b></li>
+                    <li class='list-group-item'><i class='far fa-clock'></i><b> Horário Funcionamento</b> <p class='float-right'>".utf8_encode($func)."</p></li>
+                    <li class='list-group-item'><i class='fas fa-ambulance'></i><b> Serviço Móvel</b> <p class='float-right'>".utf8_encode($servicoM).",".utf8_encode($movelE)."</p></li>
                     <li class='list-group-item'><b>Atendimento Grandes Animais</b> <p class='float-right'>".utf8_encode($Att)."</p></li>
                   </ul>
-                <h5 class='my-3 text-center'>Especialidades</h5>
+                    
                 <ul class='list-group list-group'>
+                 <li class='list-group-item list-group-item-action list-group-item-info text-center'><b><h5>Especialidades</h5></b></li>
                 "; 
                 foreach ($linhas as $listar) {
                 //tbl especialidade

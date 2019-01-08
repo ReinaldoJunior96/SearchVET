@@ -79,7 +79,7 @@ $status = $_SESSION['status'];
 			<a class="dropdown-item" href="Perfil.php">Contato</a>
 			<a class="dropdown-item" href="EditarEndereco.php">Endereço</a>
 			<a class="dropdown-item" href="EditarPerguntas.php">Informações</a>
-			<a class="dropdown-item" href="AddLogo.php">Logomarca</a>
+			<!-- <a class="dropdown-item" href="AddLogo.php">Logomarca</a> -->
 			<a class="dropdown-item active" href="Especialidades.php">Especialidades</a>
 			<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="Back/Sair.php">Sair</a>
