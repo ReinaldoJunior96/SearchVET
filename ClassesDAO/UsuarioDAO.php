@@ -18,6 +18,7 @@ class UsuarioDAO extends PDOconectar
                                                 INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
                                                 INNER JOIN informacoes ON clinicas.Identificacao = informacoes.Identificacao
                                                 INNER JOIN logos ON informacoes.Identificacao = logos.Identificacao
+                                                INNER JOIN especialidade ON logos.Identificacao = especialidade.Identificacao
                                                 WHERE clinicas.Identificacao='$unica'"); 
             $fichaUnica->execute();            
             $linhas = $fichaUnica->fetchAll(PDO::FETCH_OBJ); 
@@ -40,6 +41,8 @@ class UsuarioDAO extends PDOconectar
                 $Att = $listar->Atendimento_A;
                 //tbl logos
                 $foto = $listar->Foto;
+                //tbl especialidade
+                $especialidade = $listar->Especialidade;
                 //<img src='images/terrazoo.png' class='img-thumbnail float-sm-right rounded mx-auto d-block' alt='Imagem responsiva'>
             }
             if ($movelE == null) {
@@ -73,10 +76,20 @@ class UsuarioDAO extends PDOconectar
 
                         <h4 class='d-block p-0 bg-secondary text-white'>Serviços Adiconais</h4>
                         <p class='lead'><b>Serviço Móvel: </b>".utf8_encode($servicoM).", ".utf8_encode($movelE)."
+                        <h4 class='d-block p-0 bg-secondary text-white'>Especialidade(s)</h4>
+                "; 
+                foreach ($linhas as $listar) {
+                //tbl especialidade
+                $especialidade = $listar->Especialidade;
+                echo "
+                    
+                        <p class='lead'><i class='fas fa-check-circle'></i> ".$especialidade."
+                ";
+                }
+                echo "
                     </div>
                 </div>
                 ";
-
         } catch (PDOException $ex) {
             echo "Erro: " . $ex->getMessage();
         }
@@ -326,7 +339,444 @@ class UsuarioDAO extends PDOconectar
                 }elseif ($contar<=0) {
                     echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
                 }
+                // ==================================================================
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Acupuntura') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Acupuntura' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Analises Laboratoriais') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Analises Laboratoriais' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Cardiologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Cardiologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Dermatologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Dermatologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Diagnostico por Imagem') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Diagnostico por Imagem' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Endocrinologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Endocrinologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Geriatria') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Geriatria' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Neonatologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Neonatologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Nefrologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Nefrologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Neurologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Neurologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Odontologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Odontologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Oftalmologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Oftalmologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Oncologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Oncologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Ortopedia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Ortopedia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
+            }elseif (!empty($_GET['filtro']) && !empty($_GET['filtro2'] == 'Traumatologia') ) {
+                $filtro = $this->conn->prepare("SELECT * FROM enderecos 
+                                                INNER JOIN clinicas ON enderecos.Identificacao = clinicas.Identificacao
+                                                INNER JOIN especialidade ON clinicas.Identificacao = especialidade.Identificacao
+                                                WHERE Especialidade='Traumatologia' AND Bairro LIKE '%".$Filtro."%'");
+                $filtro->execute();
+                $contar =  $filtro->rowCount();           
+                $linhas = $filtro->fetchAll(PDO::FETCH_OBJ);
+               if ($contar>=1) {
+                foreach ($linhas as $listar) {
+                    $Iden = $listar->Identificacao;
+                    $nome = $listar->Nome;
+                    $email = $listar->Email;
+                    $contato = $listar->Contato;
+                    $complemento = $listar->Complemento;
+                    echo"
+                          <div class='card'> 
+                            <div class='card-body'> 
+                            <h3 class='card-title'>".utf8_encode($nome)."</h3>
+                            <p class='card-text'>Ponto de Referência: ".utf8_encode($complemento)."</p>
+                            <a href='./VisualizarPerfil.php?id=".$Iden."&logado=".$logado."' class='btn btn-primary'>Visitar Perfil</a>
+                          </div>
+                        </div>
+                        <br>
+                    ";
+                }
+                }elseif ($contar<=0) {
+                    echo "<h3 style='text-align: center;'>*CONDIÇÕES DE BUSCA NÃO ENCONTRADAS*</h3>";
+                }
             }
+
         } catch (PDOException $ex) {
             echo "Erro: " . $ex->getMessage();
         }

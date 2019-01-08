@@ -70,7 +70,7 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label"><i>Qual bairro deseja buscar o serviço?</i></label>
     <div class="col-sm-10">
-      <input type="text" name="filtro" class="form-control" id="inputEmail3" placeholder="Bairro...">
+      <input type="text" name="filtro" class="form-control" id="inputEmail3" placeholder="Bairro..." required="">
     </div>
   </div>
   <div class="form-group row">
@@ -81,6 +81,23 @@
         <option value="24h">&emsp;Clínicas 24h</option>
         <option value="ServicoM">&emsp;Serviço Móvel</option>
         <option value="AttGA">&emsp;Atendimento P/Grandes Animais</option>
+        <option selected>Especialidades</option>
+
+        <option value="Acupuntura">&emsp;Acupuntura</option>
+        <option value="Analises Laboratoriais">&emsp;Análises Laboratoriais</option>
+        <option value="Cardiologia">&emsp;Cardiologia</option>
+        <option value="Dermatologia">&emsp;Dermatologia</option>
+        <option value="Diagnostico por Imagem">&emsp;Diagnóstico por Imagem</option>
+        <option value="Endocrinologia">&emsp;Endocrinologia</option>
+        <option value="Geriatria">&emsp;Geriatria</option>
+        <option value="Neonatologia">&emsp;Neonatologia</option>
+        <option value="Nefrologia">&emsp;Nefrologia</option>
+        <option value="Neurologia">&emsp;Neurologia</option>
+        <option value="Odontologia">&emsp;Odontologia</option>
+        <option value="Oftalmologia">&emsp;Oftalmologia</option>
+        <option value="Oncologia">&emsp;Oncologia</option>
+        <option value="Ortopedia">&emsp;Ortopedia</option>
+        <option value="Traumatologia">&emsp;Traumatologia</option>        
       </select>
     </div>
   </div>
